@@ -40,7 +40,7 @@ _Upchrome() {
 }
 _upptg() {
     pip3 install rejson
-    pip3 install PikaTgBot==1.3.101
+    pip3 install PikaTgBot==1.4.0
 }
 
 StartUp() {
