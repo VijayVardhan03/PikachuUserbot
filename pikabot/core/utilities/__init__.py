@@ -1,6 +1,7 @@
 
 from telethon import TelegramClient
 from telethon.sessions import StringSession
+from .database import pdb
 def PikaClient(session, gBot=None):
     if gBot:
         return TelegramClient(
