@@ -99,22 +99,22 @@ async def init_pika():
                     await pika_msg(_logpika, msg)
                     await pika_login("multi3")
 
-            if pdb.maincl and bot is None:
+            if pdb.Alpha and bot is None:
                 pikalog.info(
                     "**MAINCLIENT**: Session Expired / Invalid, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
                 await pika_login("main")
 
-            if pdb.multicl1 and bot2 is None:
+            if pdb.Beta and bot2 is None:
                 pikalog.info(
                     "**MULTICLIENT1**: Session Expired / Invalid, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
                 await pika_login("multi1")
 
-            if pdb.multicl2 and bot3 is None:
+            if pdb.Gaama and bot3 is None:
                 pikalog.info(
                     "**MULTICLIENT2**: Session Expired / Invalid, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
                 await pika_login("multi2")
 
-            if pdb.multicl3 and bot4 is None:
+            if pdb.Delta and bot4 is None:
                 pikalog.info(
                     "**MULTICLIENT3**: Session Expired, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
                 await pika_login("multi3")
