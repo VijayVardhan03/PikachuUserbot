@@ -1,5 +1,4 @@
-from ..core.database import pdb
-from ..resources.login import PikaClient
+from ..core import pdb, PikaClient
 if pdb.Alpha:
     bot = client = PikaClient(pdb.Alpha)
 else:
