@@ -35,7 +35,7 @@ async def init_pika():
             tgbot.uid = tutils.get_peer_id(tgbot.me)
             pikalog.info(_logstr_.format("TGBOT"))
             msg = _logstr_.format("_TGBOT_") + '\n\n'
-            _logpika = await tgbot.send_message(pdb.botlog_chat, msg)
+            _logpika = await tgbot.send_message(pdb.Botlog_chat, msg)
             if bot:
                 try:
                     await bot.start()
