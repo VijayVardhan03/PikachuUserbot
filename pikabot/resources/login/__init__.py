@@ -38,7 +38,7 @@ def PikaClient(session, gBot=None):
         return TelegramClient(
             "TgBot",
             pdb.Api_id,
-            pdb.api_hash).start(
+            pdb.Api_hash).start(
             bot_token=session)
     else:
         return TelegramClient(
