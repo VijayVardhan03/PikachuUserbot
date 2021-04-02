@@ -21,7 +21,7 @@ async def init_pika():
         _start = True
         _logstr_ = "__{}__: Connected 🔥"
         _logstr2_ = "__{}__: Started Login Assistent, Do /start at {}'s PM".format(
-            _const, pdb.bf_uname)
+            _const, pdb.Bf_uname)
         import glob
         path = './plugins/*.py'
         _path = './pikabot/Assistant/plugins/*.py'
