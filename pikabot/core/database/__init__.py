@@ -428,3 +428,4 @@ class pdb(object):
     Gaama = pget("gaama", "session")
     Delta = pget("delta", "session")
     Asstt = pget("omega", "assistant")
+    Botlog_chat = _get("BOTLOG_CHATID")
