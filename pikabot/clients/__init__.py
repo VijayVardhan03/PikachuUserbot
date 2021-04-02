@@ -20,7 +20,7 @@ if pdb.Delta:
 else:
     bot4 = client4 = None
 
-if pdb.bf_token:
+if pdb.Omega:
     tgbot = tgbot_client = PikaClient(pdb.Omega, gBot=True)
 
 else:
