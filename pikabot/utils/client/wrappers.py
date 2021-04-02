@@ -31,19 +31,4 @@ async def get_pika_tg(_pika_):
   if tg_id == tgbot.uid: 
       return True 
 
-#©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/>
-async def add_chat(_pika_):
-  if await is_pikatg(_pika_): 
-     if not _pika_.is_private:
-        if not is_pika_exist(_pika_.chat_id): 
-           add_pika(_pika_.chat_id)
-           return "Added" 
-  else:
-    return
-#©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/>
-async def pika_cmds(_pika_):
-  global PikaAsst
-  if not await is_pikatg(_pika_):
-      return bot.pika_cmd
-  else: 
-      return PikaAsst
+__all__=['pikamsg', 'is_pikatg', 'get_pika_tg', 'get_pika_id']
