@@ -3,7 +3,7 @@ import asyncio
 import os
 import sys
 from ...core import pdb
-from ...clients import tg_client
+from ...clients import tgbot_client
 from telethon import TelegramClient, events, custom
 from telethon.sessions import StringSession
 from telethon.errors.rpcerrorlist import *
@@ -63,9 +63,9 @@ def get_cl(_PiKa_):
 
 
 async def pika_login(_PiKa_):
-    tgclient = tg_client
-    async with tg_client:
-        me = await tg_client.get_me()
+    tgclient = tg_client = tgbot_client
+    async with tgbot_client:
+        me = await tgbot_client.get_me()
         pikalog.info(me.first_name)
 
         @tgclient.on(events.NewMessage())
