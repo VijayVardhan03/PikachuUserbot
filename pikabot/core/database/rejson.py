@@ -14,7 +14,7 @@ pikadel = pikadb.jsondel
 pikaget = pikadb.jsonget
 
 cdata = {
-    'main': {
+    'alpha': {
         'session': None,
         'pmsecurity': False,
         'pmmsg': None,
@@ -29,7 +29,7 @@ cdata = {
         'dauser': None,
         'assistant': None
     },
-    'multi1': {
+    'beta': {
         'session': None,
         'pmsecurity': False,
         'pmmsg': None,
@@ -41,7 +41,7 @@ cdata = {
         'auser': None,
         'dauser': None
     },
-    'multi2': {
+    'gaama': {
         'session': None,
         'pmsecurity': False,
         'pmmsg': None,
@@ -52,7 +52,7 @@ cdata = {
         'pmlogger': None,
         'auser': None
     },
-    'multi3': {
+    'delta': {
         'session': None,
         'pmsecurity': False,
         'pmmsg': None,
@@ -93,3 +93,12 @@ def pget(rejsclt, dta):
     pth = "." + f"{rejsclt}" + "." + f"{dta}"
     return pikaget('cdata', Path(f"{pth}"))
 
+class pdb(object):
+    Api_id = _get("API_ID")
+    Api_hash = _get("API_HASH")
+    Omega = _get("TG_BOT_TOKEN_BF_HER")
+    Af_uname = _get("TG_BOT_USER_NAME_BF_HER")
+    Alpha = pget("alpha", "session")
+    Beta = pget("beta", "session")
+    Gaama = pget("gaama", "session")
+    Delta = pget("delta", "session")
