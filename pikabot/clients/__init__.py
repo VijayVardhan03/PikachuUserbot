@@ -1,26 +1,33 @@
-from ..core import pdb, PikaClient
-if pdb.Alpha:
-    bot = client = PikaClient(pdb.Alpha)
+from ..core import pdb, pget, PikaClient
+
+Alpha = pget("alpha", "session")
+Beta = pget("beta", "session")
+Gaama = pget("gaama", "session")
+Delta = pget("delta", "session")
+Asstt = pget("omega", "assistant")
+
+if Alpha:
+    bot = client = PikaClient(Alpha)
 else:
     bot = client = None
 
-if pdb.Beta:
-    bot2 = client2 = PikaClient(pdb.Beta)
+if Beta:
+    bot2 = client2 = PikaClient(Beta)
 else:
     bot2 = client2 = None
 
-if pdb.Gaama:
-    bot3 = client3 = PikaClient(pdb.Gaama)
+if Gaama:
+    bot3 = client3 = PikaClient(Gaama)
 else:
     bot3 = None
 
-if pdb.Delta:
-    bot4 = client4 = PikaClient(pdb.Delta)
+if Delta:
+    bot4 = client4 = PikaClient(Delta)
 else:
     bot4 = client4 = None
 
-if pdb.Omega:
-    tgbot = tgbot_client = PikaClient(pdb.Omega, gBot=True)
+if Omega:
+    tgbot = tgbot_client = PikaClient(Omega, gBot=True)
 
 else:
     tgbot = tgbot_client = None
