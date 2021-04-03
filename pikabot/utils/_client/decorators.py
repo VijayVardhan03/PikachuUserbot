@@ -15,6 +15,49 @@ from pathlib import Path
 import re
 import sys
 
+def pika_sudo(from_client=None, **args):
+    args["func"] = lambda e: e.via_bot_id is None
+    stack = inspect.stack()
+    previous_stack_frame = stack[1]
+    file_test = Path(previous_stack_frame.filename)
+    file_test = file_test.stem.replace(".py", "")
+    pattern = args.get("pattern", None)
+    allow_sudo = True
+    # get the pattern from the decorator
+    if pattern is not None:
+        if pattern.startswith("\#"):
+            # special fix for snip.py
+            args["pattern"] = re.compile(pattern)
+        else:
+            args["pattern"] = re.compile(plug + pattern)
+            cmd = plug + pattern
+            try:
+                CMD_LIST[file_test].append(cmd)
+                Pika_Cmd[file_test].append(cmd)
+            except:
+                CMD_LIST.update({file_test: [cmd]})
+                Pika_Cmd.update({file_test: [cmd]})
+    args["outgoing"] = True
+    # should this command be available for other users?
+    if allow_sudo:
+        if from_client == 1:
+           sudo = list(Var.SUDO_USERS1)
+        if from_client == 2:
+           sudo = list(Var.SUDO_USERS2)
+        if from_client == 3:
+           sudo = list(Var.SUDO_USERS3)
+        if from_client == 4:
+           sudo = list(Var.SUDO_USERS4)
+                 
+        args["from_users"] = sudo
+        args["incoming"] = True
+
+    elif "incoming" in args and not args["incoming"]:
+        args["outgoing"] = True
+        
+    is_message_enabled = True
+
+    return events.NewMessage(**args)
 
 def ItzSjDude(**args):
     from pikabot import pget
@@ -307,4 +350,4 @@ class Loader():
         bot.add_event_handler(func, events.NewMessage(**args))
 
 
-__all__=['ItzSjDude', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
+__all__=['ItzSjDude', 'pika_sudo', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
