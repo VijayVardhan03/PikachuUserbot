@@ -2,7 +2,8 @@ from telethon import *
 from importlib.util import *
 from ..resources.reqfxns import *
 import logging
-import sys           
+import sys
+from var import Var           
 from sys import modules
 import pikabot
 from pikabot import bot
