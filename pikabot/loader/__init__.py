@@ -10,6 +10,8 @@ from pikabot import bot, ItzSjDude
 from pikabot.core import pget
 import pikabot.utils as _utilz
 from pathlib import Path as _asstpath
+from logging import getLogger
+logpl = getLogger("Plugins:")
 def pika_assistant(_pikasst=None):
     if ACTIVATE_ASSISTANT:
        import plugins.__init__ as _Modules
