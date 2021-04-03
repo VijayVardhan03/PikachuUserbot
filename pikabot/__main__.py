@@ -146,7 +146,7 @@ async def init_pika():
             await pika_msg(_logpika, msg)
 
         if len(argv) not in (1, 3, 4):
-            if client:
+            if bot:
                 await bot.disconnect()
             if client2:
                 await bot2.disconnect()
@@ -156,7 +156,7 @@ async def init_pika():
                 await bot4.disconnect()
         else:
             if bot:
-                await client.run_until_disconnected()
+                await bot.run_until_disconnected()
             if bot2:
                 await client2.run_until_disconnected()
             if bot3:
