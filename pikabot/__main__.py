@@ -15,7 +15,7 @@ async def init_pika():
     if bot is None:
         pikalog.info(
             "**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(pdb.Bf_uname))
-        await pika_login("main")
+        await pika_login("alpha")
     else:
         _const = {}
         _start = True
@@ -50,7 +50,7 @@ async def init_pika():
                     pikalog.info(_logstr2_.format("MAINCLIENT"))
                     msg += _logstr2_.format("MAINCLIENT") + "\n\n"
                     await pika_msg(_logpika, msg)
-                    await pika_login("main")
+                    await pika_login("alpha")
 
             if bot2:
                 try:
@@ -64,7 +64,7 @@ async def init_pika():
                     pikalog.info(_logstr2_.format("MULTICLIENT1"))
                     msg += _logstr2_.format("MULTICLIENT1") + "\n\n"
                     await pika_msg(_logpika, msg)
-                    await pika_login("multi1")
+                    await pika_login("beta")
             if bot3:
                 try:
                     await bot3.start()
@@ -77,7 +77,7 @@ async def init_pika():
                     pikalog.info(_logstr2_.format("MULTICLIENT2"))
                     msg += _logstr2_.format("MULTICLIENT2") + "\n\n"
                     await pika_msg(_logpika, msg)
-                    await pika_login("multi2")
+                    await pika_login("gaama")
             if bot4:
                 try:
                     await bot4.start()
@@ -90,27 +90,27 @@ async def init_pika():
                     pikalog.info(_logstr2_.format("MULTICLIENT3"))
                     msg += _logstr2_.format("MULTICLIENT3") + "\n\n"
                     await pika_msg(_logpika, msg)
-                    await pika_login("multi3")
+                    await pika_login("delta")
 
             if pdb.Alpha and bot is None:
                 pikalog.info(
                     "**MAINCLIENT**: Session Expired / Invalid, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
-                await pika_login("main")
+                await pika_login("alpha")
 
             if pdb.Beta and bot2 is None:
                 pikalog.info(
                     "**MULTICLIENT1**: Session Expired / Invalid, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
-                await pika_login("multi1")
+                await pika_login("beta")
 
             if pdb.Gaama and bot3 is None:
                 pikalog.info(
                     "**MULTICLIENT2**: Session Expired / Invalid, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
-                await pika_login("multi2")
+                await pika_login("gaama")
 
             if pdb.Delta and bot4 is None:
                 pikalog.info(
                     "**MULTICLIENT3**: Session Expired, Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
-                await pika_login("multi3")
+                await pika_login("delta")
 
             def __load_plugs__():
                 from .loader import pika_plugins, pika_assistant
