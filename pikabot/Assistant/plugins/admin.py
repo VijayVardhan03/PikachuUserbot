@@ -57,7 +57,6 @@ from Asst_modules import (
     _ungmute,
     _unmute,
     admin_cmd,
-    add_chat,
 )
 
 @ItzSjDude(pika=True, groups_only=True, pattern=r"setgpic$")
@@ -161,7 +160,3 @@ async def _(show):
 async def _(moot):
   await _muter(moot)
 
-@tgbot.on(admin_cmd(incoming=True))
-@pikatgbot("AmIAdm", silent=True)
-async def _(event):
-  await add_chat(event)
