@@ -43,5 +43,6 @@ StartUp() {
     _CleanUp
     _UpSource
     _Upchrome
+    ls 
     python3 -m pikabot
 }
