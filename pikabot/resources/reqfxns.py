@@ -1,4 +1,4 @@
-import os; from distutils.util import strtobool as sb
+import os; from distutils.util import strtobool as sb; from logging import getLogger; pikalog = getLogger(__name__)
 CMD_LIST = {}
 PikaAsst = {}
 CMD_HELP = {}
