@@ -1,5 +1,4 @@
 from . import *
-from pikabot import pika_plugins
 from sys import *
 import asyncio
 from telethon import *
