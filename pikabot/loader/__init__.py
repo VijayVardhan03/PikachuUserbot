@@ -37,7 +37,7 @@ def pika_plugins(_pikamod=None):
     _pika = module_from_spec(spec)
                                    #____Pikabot__Plugins__Loader____
     userbot = pikabot; _pika.bot = bot; _pika.Var = Var; _pika.rx = rx; _pika.ItzSjDude = ItzSjDude; _pika.Config = Var; _pika.borg = bot; _pika.logger = logging.getLogger(_pikamod)
-    modules["SysRuntime"] = pikabot.main_plugs.SysRuntime; modules["userbot"] = pikabot; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_pika); bot.pika_cmd[_pikamod] = _pika; modules["pikabot"+_pikamod] = _pika; logpl.info("🔥Imported "+_pikamod)
+    modules["userbot"] = pikabot; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_pika); bot.pika_cmd[_pikamod] = _pika; modules["pikabot"+_pikamod] = _pika; logpl.info("🔥Imported "+_pikamod)
 
 def load_ext_module(shortname):
     if shortname.endswith("_"):
