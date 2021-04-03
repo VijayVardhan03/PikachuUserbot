@@ -165,6 +165,7 @@ async def init_pika():
             if bot4:
                 await client4.run_until_disconnected()
 
-
+  
 if __name__ == "__main__":
-    
+    pikaloop = asyncio.get_event_loop()
+    pikaloop.run_until_complete(init_pika())
