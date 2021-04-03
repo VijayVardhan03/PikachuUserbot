@@ -30,7 +30,6 @@ LASTMSG = {}
 const = {}
 ISAFK = False
 AFKREASON = None
-pikalog = getLogger(__name__)
 CHROME_DRIVER = "/usr/bin/chromedriver"
 GOOGLE_CHROME_BIN = "/usr/bin/google-chrome"
 BOTLOG_CHATID = os.environ.get("BOTLOG_CHATID", None)
