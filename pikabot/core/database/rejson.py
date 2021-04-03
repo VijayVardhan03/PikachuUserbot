@@ -1,4 +1,4 @@
-from rejson import Client
+from rejson import Client, Path
 
 uri = _get("REDIS_ENDPOINT").split(":")
 host = uri[0]
