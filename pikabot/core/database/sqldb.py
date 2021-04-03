@@ -28,20 +28,6 @@ def start() -> scoped_session:
 BASE = declarative_base()
 SESSION = start()
 
-
-class PBD(BASE):
-    __tablename__ = "pdb"
-    client = Column(String, primary_key=True, nullable=False)
-    var = Column(String)
-    value = Column(UnicodeText)
-
-    def __init__(self, client, var, value):
-        self.client = str(client)
-        self.var = str(variable)
-        self.value = value
-
-PBD.__table__.create(checkfirst=True)
-
 class BotUsers(BASE):
     __tablename__ = "botusers"
     pika_id = Column(String(14), primary_key=True)
@@ -412,13 +398,3 @@ def get_added_users():
     return pika
 
 
-class pdb(object):
-    Api_id = _get("API_ID")
-    Api_hash = _get("API_HASH")
-    Bf_uname = _get("TG_BOT_USER_NAME_BF_HER")
-    Omega = _get("TG_BOT_TOKEN_BF_HER")
-    Botlog_chat = int(_get("BOTLOG_CHATID"))
-    Alpha = _get("Alpha")
-    Beta = _get("Beta")
-    Gaama= _get("Gaama")
-    Delta = _get("Delta")
