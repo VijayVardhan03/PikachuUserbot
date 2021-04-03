@@ -1,4 +1,4 @@
-from . import pdb, bot, bot2, bot3, bot4
+from . import pdb, pika_login, bot, bot2, bot3, bot4
 from sys import *
 import asyncio
 from telethon import *
