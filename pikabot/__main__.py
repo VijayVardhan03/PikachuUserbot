@@ -13,9 +13,12 @@ pikalog = getLogger(__name__)
 
 async def init_pika():
     if bot is None:
-        pikalog.info(
-            "**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(pdb.Bf_uname))
-        await pika_login("alpha")
+        try: 
+            pikalog.info(
+               "**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(pdb.Bf_uname))
+            await pika_login("alpha")
+        except exception as e:
+            pikalog.info(str(e))
     else:
         _const = {}
         _start = True
