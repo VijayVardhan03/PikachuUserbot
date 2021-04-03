@@ -23,8 +23,6 @@ pikalog = getLogger(__name__)
 
 
 async def init_pika():
-    from pikabot.core.database import start
-    start()
     from pikabot.core.database import pdb
     if bot is None:
         pikalog.info(
