@@ -1,4 +1,4 @@
-import os
+import os; from distutils.util import strtobool as sb
 CMD_LIST = {}
 PikaAsst = {}
 CMD_HELP = {}
