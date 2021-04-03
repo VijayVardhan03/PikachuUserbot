@@ -1,22 +1,22 @@
 from ..core import pdb, pget, PikaClient
 
 if pdb.Alpha:
-    bot = client = PikaClient(Alpha)
+    bot = client = PikaClient(pdb.Alpha)
 else:
     bot = client = None
 
 if pdb.Beta:
-    bot2 = client2 = PikaClient(Beta)
+    bot2 = client2 = PikaClient(pdb.Beta)
 else:
     bot2 = client2 = None
 
 if pdb.Gaama:
-    bot3 = client3 = PikaClient(Gaama)
+    bot3 = client3 = PikaClient(pdb.Gaama)
 else:
     bot3 = None
 
 if pdb.Delta:
-    bot4 = client4 = PikaClient(Delta)
+    bot4 = client4 = PikaClient(pdb.Delta)
 else:
     bot4 = client4 = None
 
