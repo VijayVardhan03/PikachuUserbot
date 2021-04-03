@@ -126,6 +126,7 @@ async def init_pika():
 
             def __load_plugs__():
                 from .loader import pika_plugins, pika_assistant
+                from pathlib import Path
                 for name in files:
                     with open(name) as f:
                         path1 = Path(f.name)
