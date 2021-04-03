@@ -16,6 +16,10 @@ import re
 import sys
 
 def pika_sudo(from_client=None, **args):
+    if pget("alpha", "cmdhandler"):
+       plug = pget("alpha", "cmdhandler")
+    else: 
+       plug = "."
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
