@@ -1,15 +1,14 @@
-try: 
-   from . import pdb, pika_login, bot, bot2, bot3, bot4, tgbot
-   from sys import *
-   import asyncio
-   from telethon import *
-   from pathlib import Path
-   from logging import getLogger
-   from telethon.tl.types import *
-   import telethon.utils as tutils
-   from telethon.errors.rpcerrorlist import *
-except exception as e:
-   print(str(e))
+
+from . import pdb, pika_login, bot, bot2, bot3, bot4, tgbot
+from sys import *
+import asyncio
+from telethon import *
+from pathlib import Path
+from logging import getLogger
+from telethon.tl.types import *
+import telethon.utils as tutils
+from telethon.errors.rpcerrorlist import *
+
 pikalog = getLogger(__name__)
 
 
@@ -158,5 +157,4 @@ async def init_pika():
 
 
 if __name__ == "__main__":
-    pikaloop = asyncio.get_event_loop()
-    pikaloop.run_until_complete(init_pika())
+    asyncio.run(init_pika())
