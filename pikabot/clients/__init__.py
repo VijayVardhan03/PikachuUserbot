@@ -1,9 +1,6 @@
 from ..core import pdb, pget, PikaClient
 
-if pdb.Alpha:
-    bot = client = PikaClient(pdb.Alpha)
-else:
-    bot = client = None
+bot = client = PikaClient(os.environ.get("STRING_SESSION"))
 
 if pdb.Beta:
     bot2 = client2 = PikaClient(pdb.Beta)
