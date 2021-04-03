@@ -17,6 +17,11 @@ import sys
 
 
 def ItzSjDude(**args):
+    from pikabot import pget
+    if pget("alpha", "cmdhandler"):
+       _plug = pget("alpha", "cmdhandler")
+    else: 
+       _plug = "."
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
