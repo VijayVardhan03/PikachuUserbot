@@ -23,7 +23,6 @@ pikalog = getLogger(__name__)
 
 
 async def init_pika():
-    os.system("pip3 install rejson")
     from pikabot.core.database import pdb
     if bot is None:
         pikalog.info(
