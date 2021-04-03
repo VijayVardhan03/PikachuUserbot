@@ -13,6 +13,7 @@ from pathlib import Path as _asstpath
 from logging import getLogger
 logpl = getLogger("Plugins:")
 logpa = getLogger("Assistant:")
+
 def pika_assistant(_pikasst=None):
     if ACTIVATE_ASSISTANT:
        rx = "!"
