@@ -43,6 +43,5 @@ StartUp() {
     _CleanUp
     _UpSource
     _Upchrome
-    mkdir ./pikabot/main_plugs
     python3 -m pikabot
 }
