@@ -7,10 +7,10 @@ from sys import modules
 from pikabot.core import pget
 import pikabot.utils as _utilz
 from pathlib import Path as _asstpath
-import plugins.__init__ as _Modules
 
 def pika_assistant(_pikasst=None):
     if ACTIVATE_ASSISTANT:
+       import plugins.__init__ as _Modules
        asstpath = _asstpath(f"./pikabot/Assistant/plugins/{_pikasst}.py")
        asstname = "pikabot.Assistant.plugins.{}".format(_pikasst)
        spec = spec_from_file_location(asstname, asstpath)
