@@ -5,6 +5,7 @@ import logging
 import sys           
 from sys import modules
 import pikabot
+from pikabot import bot
 from pikabot.core import pget
 import pikabot.utils as _utilz
 from pathlib import Path as _asstpath
