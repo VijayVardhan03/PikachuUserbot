@@ -10,8 +10,8 @@
 # All rights reserved 
 
 from pikabot.core.database.sqldb import is_user_exist, add_user
-from Asst_modules import telethon, os, Button, custom, events, GetFullUserRequest, Pika_CallBack, re
-
+from Asst_modules import os, Button, custom, events, GetFullUserRequest, Pika_CallBack, re
+import telethon 
 pic = os.environ.get("START_PIC", None)
 if pic:
  pic = pic
