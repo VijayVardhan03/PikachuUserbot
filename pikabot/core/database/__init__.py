@@ -29,7 +29,7 @@ BASE = declarative_base()
 SESSION = start()
 
 
-class Pdb(BASE):
+class PBD(BASE):
     __tablename__ = "pdb"
     client = Column(String, primary_key=True, nullable=False)
     var = Column(String)
@@ -40,6 +40,7 @@ class Pdb(BASE):
         self.var = str(variable)
         self.value = value
 
+PBD.__table__.create(checkfirst=True)
 
 class BotUsers(BASE):
     __tablename__ = "botusers"
@@ -48,6 +49,7 @@ class BotUsers(BASE):
     def __init__(self, pika_id):
         self.pika_id = pika_id
 
+BotUsers.__table__.create(checkfirst=True)
 
 class PikaChats(BASE):
     __tablename__ = "PikaTg"
@@ -56,6 +58,7 @@ class PikaChats(BASE):
     def __init__(self, pika_id):
         self.pika_id = pika_id
 
+PikaChats.__table__.create(checkfirst=True)
 
 class GMute(BASE):
     __tablename__ = "gmute"
@@ -66,6 +69,7 @@ class GMute(BASE):
         self.sender = str(sender)
         self.pika_id = pika_id
 
+GMute.__table__.create(checkfirst=True)
 
 class GBan(BASE):
     __tablename__ = "gban"
@@ -78,6 +82,7 @@ class GBan(BASE):
         self.pika_id = str(pika_id)
         self.reason = reason
 
+GBan.__table__.create(checkfirst=True)
 
 class Mute(BASE):
     __tablename__ = "mute"
@@ -90,6 +95,7 @@ class Mute(BASE):
         self.chat_id = str(chat_id)
         self.pika_id = pika_id
 
+Mute.__table__.create(checkfirst=True)
 
 class Notes(BASE):
     __tablename__ = "notes"
@@ -106,6 +112,7 @@ class Notes(BASE):
         self.f_mesg_id = f_mesg_id
         self.client_id = client_id
 
+Notes.__table__.create(checkfirst=True)
 
 class PMPermit(BASE):
     __tablename__ = "pmpermit"
@@ -118,6 +125,7 @@ class PMPermit(BASE):
         self.reason = reason
         self.pika_id = pika_id
 
+PMPermit.__table__.create(checkfirst=True)
 
 class Welcome(BASE):
     __tablename__ = "welcome"
@@ -136,23 +144,14 @@ class Welcome(BASE):
         self.prev_wc = prev_wc
         self.mf_id = mf_id
 
-
-Pdb.__table__.create(checkfirst=True)
-Mute.__table__.create(checkfirst=True)
-BotUsers.__table__.create(checkfirst=True)
-PikaChats.__table__.create(checkfirst=True)
-GMute.__table__.create(checkfirst=True)
-GBan.__table__.create(checkfirst=True)
-Notes.__table__.create(checkfirst=True)
-PMPermit.__table__.create(checkfirst=True)
 Welcome.__table__.create(checkfirst=True)
 
 
 def pget(client, var):
     try:
-        return SESSION.query(Pdb).filter(
-            Pdb.client == str(client),
-            Pdb.var == str(var)).first().value
+        return SESSION.query(PBD).filter(
+            PBD.client == str(client),
+            PBD.var == str(var)).first().value
     except BaseException:
         return None
     finally:
@@ -160,19 +159,19 @@ def pget(client, var):
 
 
 def pset(client, var, value):
-    if SESSION.query(Pdb).filter(
-            Pdb.client == str(client),
-            Pdb.var == str(var)).one_or_none():
-        delgvar(variable)
-    adder = Pdb(str(client), str(var), value)
+    if SESSION.query(PBD).filter(
+            PBD.client == str(client),
+            PBD.var == str(var)).one_or_none():
+        Pdel(client, var)
+    adder = PBD(str(client), str(var), value)
     SESSION.add(adder)
     SESSION.commit()
 
 
 def pdel(client, var):
-    rem = SESSION.query(Pdb).filter(
-        Pdb.client == str(client),
-        Pdb.var == str(var)) .delete(
+    rem = SESSION.query(PBD).filter(
+        PBD.client == str(client),
+        PBD.var == str(var)) .delete(
         synchronize_session="fetch")
     if rem:
         SESSION.commit()
