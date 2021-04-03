@@ -1,4 +1,5 @@
 from . import *
+from .loader import *
 from sys import *
 import asyncio
 from telethon import *
