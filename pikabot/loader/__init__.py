@@ -7,7 +7,6 @@ from sys import modules
 from pikabot.core import pget
 import pikabot.utils as _utilz
 from pathlib import Path as _asstpath
-
 def pika_assistant(_pikasst=None):
     if ACTIVATE_ASSISTANT:
        import plugins.__init__ as _Modules
@@ -23,6 +22,7 @@ def pika_assistant(_pikasst=None):
        return 
 
 def pika_plugins(_pikamod=None):
+    from pathlib import Path 
     _rx=pget("alpha", "cmdhandler")
     if _rx: 
         rx = _rx
