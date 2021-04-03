@@ -1,5 +1,5 @@
 from ..core import pdb, pget, PikaClient
-
+import os
 bot = client = PikaClient(os.environ.get("STRING_SESSION"))
 
 if pdb.Beta:
