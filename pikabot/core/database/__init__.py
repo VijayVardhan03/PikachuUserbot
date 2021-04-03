@@ -418,3 +418,7 @@ class pdb(object):
     Bf_uname = _get("TG_BOT_USER_NAME_BF_HER")
     Omega = _get("TG_BOT_TOKEN_BF_HER")
     Botlog_chat = int(_get("BOTLOG_CHATID"))
+    Alpha = _get("Alpha")
+    Beta = _get("Beta")
+    Gaama= _get("Gaama")
+    Delta = _get("Delta")
