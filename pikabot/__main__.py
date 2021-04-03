@@ -9,7 +9,7 @@
 #
 # All rights reserved
 
-from . import pika_login, bot, bot2, bot3, bot4, tgbot
+from . import pika_msg, pika_login, bot, bot2, bot3, bot4, tgbot
 from sys import *
 import asyncio, os
 from telethon import *
