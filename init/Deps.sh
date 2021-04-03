@@ -30,7 +30,7 @@ _UpSource() {
     git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ &> /dev/null
     mkdir ./plugins
     git clone -b Beta https://github.com/ItzSjDude/PikaBotPlugins ./Temp &> /dev/null
-    cp ./Temp/plugins/*.py ./plugins && cp ./Temp/plugins/resources/*.py ./pikabot
+    cp ./Temp/plugins/*.py ./plugins
     rm -rf ./Temp
 }
 
