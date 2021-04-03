@@ -14,7 +14,7 @@ pikalog = getLogger(__name__)
 async def init_pika():
     if bot is None:
         pikalog.info(
-            "**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
+            "**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(pdb.Bf_uname))
         await pika_login("main")
     else:
         _const = {}
