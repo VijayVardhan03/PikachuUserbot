@@ -1,13 +1,15 @@
-from . import pdb, pika_login, bot, bot2, bot3, bot4, tgbot
-from sys import *
-import asyncio
-from telethon import *
-from pathlib import Path
-from logging import getLogger
-from telethon.tl.types import *
-import telethon.utils as tutils
-from telethon.errors.rpcerrorlist import *
-
+try: 
+   from . import pdb, pika_login, bot, bot2, bot3, bot4, tgbot
+   from sys import *
+   import asyncio
+   from telethon import *
+   from pathlib import Path
+   from logging import getLogger
+   from telethon.tl.types import *
+   import telethon.utils as tutils
+   from telethon.errors.rpcerrorlist import *
+except exception as e:
+   print(str(e))
 pikalog = getLogger(__name__)
 
 
