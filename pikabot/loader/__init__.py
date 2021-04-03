@@ -23,13 +23,17 @@ def pika_assistant(_pikasst=None):
        return 
 
 def pika_plugins(_pikamod=None):
-    _rx=pget("alpha", "custom_cmd")
+    _rx=pget("alpha", "cmdhandler")
+    if _rx: 
+        rx = _rx
+    else: 
+        rx = "."
     path = Path(f"plugins/{_pikamod}.py")
     name = "plugins.{}".format(_pikamod)
     spec = spec_from_file_location(name, path)
     _pika = module_from_spec(spec)
                                    #____Pikabot__Plugins__Loader____
-    userbot = pikabot; _pika.bot = bot; _pika.Var = Var; _pika.rx = _rx; _pika.command = Pikapi; _pika.ItzSjDude = ItzSjDude; _pika.pikaa = pikaa; _pika.Config = Var; _pika.borg = bot; _pika.logger = logging.getLogger(_pikamod)
+    userbot = pikabot; _pika.bot = bot; _pika.Var = Var; _pika.rx = rx; _pika.command = Pikapi; _pika.ItzSjDude = ItzSjDude; _pika.pikaa = pikaa; _pika.Config = Var; _pika.borg = bot; _pika.logger = logging.getLogger(_pikamod)
     modules["SysRuntime"] = pikabot.main_plugs.SysRuntime; modules["userbot"] = pikabot; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_pika); bot.pika_cmd[_pikamod] = _pika; modules["pikabot"+_pikamod] = _pika; logpl.info("🔥Imported "+_pikamod)
 
 def load_ext_module(shortname):
