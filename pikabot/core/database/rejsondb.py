@@ -1,5 +1,7 @@
 from rejson import Client, Path
+import os 
 
+_get = os.environ.get
 uri = _get("REDIS_ENDPOINT").split(":")
 host = uri[0]
 port = uri[1]
