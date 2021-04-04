@@ -10,6 +10,7 @@
 # All rights reserved
 
 from . import pika_msg, pika_login, bot, bot2, bot3, bot4, tgbot
+from resources.logit import *
 from sys import *
 import asyncio, os
 from telethon import *
