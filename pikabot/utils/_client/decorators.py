@@ -15,6 +15,7 @@ from pathlib import Path
 import re
 import sys
 
+
 def pika_sudo(from_client=None, **args):
     if pget("alpha", "cmdhandler"):
        plug = pget("alpha", "cmdhandler")
@@ -68,8 +69,8 @@ def ItzSjDude(**args):
     if pget("alpha", "cmdhandler"):
        plug = pget("alpha", "cmdhandler")
     else: 
-       plug = "."
-    _plug = "!"
+       plug = "\."
+    _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
