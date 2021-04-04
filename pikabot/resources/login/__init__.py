@@ -17,20 +17,7 @@ _verif_ = "**Login Assistent** For {}\n\nPlease enter the verification code that
 _code_ = "**Login Assistent** For {}\n\n**Invalid Code Received**. Please /start"
 _logged_ = "Login Assistent** For {}\n\n {}:LOGGED IN\n\nwait for 1Min n then Do `.pika`"
 # ----------------------------------Constants--------------------------------
-
-
-#----------deapreciated-----------#
-
-def get_cl(_PiKa_):
-    if _PiKa_ == "alpha":
-        return bot
-    if _PiKa_ == "beta":
-        return bot2
-    if _PiKa_ == "gaama":
-        return bot3
-    if _PiKa_ == "delta":
-        return bot4
-
+ 
 def get_cl_name(_PiKa_):
     if _PiKa_ == "alpha":
         return "Mainclient"
@@ -59,7 +46,16 @@ async def pika_login(_PiKa_):
                 ))
                 pikares = await pikaget
                 phone = pikares.message.message.strip()
-                pika_client = get_cl(_PiKa_)
+                if _PiKa_ == "alpha":
+                  pika_client=bot 
+                if _PiKa_ == "beta":
+                  pika_client=bot2
+                if _PiKa_ == "gaama":
+                  pika_client=bot3
+                if _PiKa_ == "delta":
+                  pika_client=bot3
+
+                await pika_client.connect()
                 await pika_client.send_code_request(phone)
                 await pikulogin.send_message(_verif_.format(_cn_))
                 pikalog.info(
