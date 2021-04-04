@@ -11,7 +11,6 @@
 
 from . import pika_msg, pika_login, bot, bot2, bot3, bot4, tgbot
 from .resources.logit import *
-from .core.database import startdb
 from sys import *
 import asyncio, os
 from telethon import *
@@ -24,8 +23,7 @@ from telethon.errors.rpcerrorlist import *
 pikalog = getLogger(__name__)
 
 async def init_pika(): 
-    startdb()
-    from pikabot.core.database import pdb
+    from .core.database import pdb
     if bot is None:
         pikalog.info(
            "**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(pdb.Bf_uname))
