@@ -1,4 +1,4 @@
-from ...clients import tgbot
+from ...clients import *
 from importlib.util import *
 import os
 from functools import wraps
