@@ -31,7 +31,7 @@ SESSION = start()
 
 class Pdb(BASE):
     __tablename__ = "pdb"
-    client = Column(String, primary_key=True, nullable=False)
+    client = Column(String)
     var = Column(String)
     value = Column(UnicodeText)
 
