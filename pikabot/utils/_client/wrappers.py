@@ -1,29 +1,21 @@
 from var import Var
 from ...core import pget
-try:
-    from ...clients import bot, bot2, bot3, bot4, tgbot
-    id1 = bot.uid
-    id2 = bot2.uid
-    id3 = bot3.uid
-    id4 = bot4.uid
-
-except BaseException:
-    pass
-
-if bot is not None:
-    i1 = id1
+from ...clients import bot, bot2, bot3, bot4, tgbot
+    
+if bot:
+    i1 = bot.uid
 else:
     i1 = 1111
-if bot2 is not None:
-    i2 = id2
+if bot2:
+    i2 = bot2.uid
 else:
     i2 = 1011
-if bot3 is not None:
-    i3 = id3
+if bot3:
+    i3 = bot3.uid
 else:
     i3 = 1010
 if bot4 is not None:
-    i4 = id4
+    i4 = bot4.uid
 else:
     i4 = 1001
 
