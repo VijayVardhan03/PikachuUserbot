@@ -3,7 +3,7 @@ import asyncio
 import os
 import sys
 from ...core import pdb, pset
-from ...clients import tgbot_client
+from ...clients import *
 from telethon import TelegramClient, events, custom
 from telethon.sessions import StringSession
 from telethon.errors.rpcerrorlist import *
