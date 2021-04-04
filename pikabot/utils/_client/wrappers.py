@@ -1,9 +1,7 @@
-
-from ...clients import *
 from var import Var
-
+from ...core import pget
 try:
-    from . import bot, bot2, bot3, bot4
+    from ...clients import bot, bot2, bot3, bot4, tgbot
     i1 = bot.uid
     i2 = bot2.uid
     i3 = bot3.uid
