@@ -92,7 +92,7 @@ async def init_pika():
                     msg += _logstr2_.format("MULTICLIENT2") + "\n\n"
                     await pika_msg(_logpika, msg)
                     await pika_login("gaama")
-            if pdb.delta:
+            if pdb.Delta:
                 try:
                     await bot4.start()
                     pikalog.info(_logstr_.format("MULTICLIENT3"))
