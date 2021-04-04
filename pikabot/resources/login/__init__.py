@@ -89,5 +89,6 @@ async def pika_login(_PiKa_):
                     s_string = pika_client.session.save()
                     await pikulogin.send_message(_logged_.format(_cn_, pika_me.first_name))
                     pset(f"{_PiKa_}", "session", s_string)
+        tgclient.run_until_disconnected()
 
 __all__ = ['pika_login', 'PikaClient']
