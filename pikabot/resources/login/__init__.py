@@ -31,13 +31,23 @@ def get_cl(_PiKa_):
     if _Pika_ == "delta":
         return bot4
 
+def get_cl_name(_PiKa_):
+    if _Pika_ == "alpha":
+        return "Mainclient"
+    if _Pika_ == "beta":
+        return "Multiclient1"
+    if _Pika_ == "gaama":
+        return "Multiclient2"
+    if _Pika_ == "delta":
+        return "Multiclient3"
 
 async def pika_login(_PiKa_):
     tgclient = tg_client = tgbot_client
+    _cn_=get_cl_name(_PiKa_)
     async with tgbot_client:
         me = await tgbot_client.get_me()
         pikalog.info(me.first_name)
-
+        
         @tgclient.on(events.NewMessage())
         async def handler(tglogin):
             if not tglogin.is_private:
