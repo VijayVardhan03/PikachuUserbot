@@ -25,6 +25,7 @@ cdata = {
         'alivemsg': None,
         'userbio': None,
         'cmdhandler': None,
+        'tgbothandler': None,
         'pmlogger': None,
         'botlog': None,
         'auser': None,
