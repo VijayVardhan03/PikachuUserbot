@@ -73,4 +73,4 @@ async def get_pika_tg(_pika_):
   if tg_id == tgbot.uid: 
       return True 
 
-__all__=['pika_msg', 'is_pikatg', 'get_pika_tg', 'get_pika_id']
+__all__=['pika_msg', 'is_pikatg', 'get_pika_tg', 'get_pika_id', 'auto_var']
