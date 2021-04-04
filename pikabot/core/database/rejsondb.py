@@ -82,10 +82,6 @@ def startdb():
     else:
         return
 
-
-startdb()
-
-
 def pset(rejsclt, data, value):
     pth = "." + f"{rejsclt}" + "." + f"{data}"
     return pikaset('cdata', Path(f"{pth}"), value)
