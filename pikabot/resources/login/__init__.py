@@ -22,23 +22,23 @@ _logged_ = "Login Assistent** For {}\n\n {}:LOGGED IN\n\nwait for 1Min n then Do
 #----------deapreciated-----------#
 
 def get_cl(_PiKa_):
-    if _Pika_ == "alpha":
+    if _PiKa_ == "alpha":
         return bot
-    if _Pika_ == "beta":
+    if _PiKa_ == "beta":
         return bot2
-    if _Pika_ == "gaama":
+    if _PiKa_ == "gaama":
         return bot3
-    if _Pika_ == "delta":
+    if _PiKa_ == "delta":
         return bot4
 
 def get_cl_name(_PiKa_):
-    if _Pika_ == "alpha":
+    if _PiKa_ == "alpha":
         return "Mainclient"
-    if _Pika_ == "beta":
+    if _PiKa_ == "beta":
         return "Multiclient1"
-    if _Pika_ == "gaama":
+    if _PiKa_ == "gaama":
         return "Multiclient2"
-    if _Pika_ == "delta":
+    if _PiKa_ == "delta":
         return "Multiclient3"
 
 async def pika_login(_PiKa_):
