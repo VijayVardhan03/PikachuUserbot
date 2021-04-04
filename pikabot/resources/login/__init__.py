@@ -20,36 +20,6 @@ _logged_ = "Login Assistent** For {}\n\n {}:LOGGED IN\n\nwait for 1Min n then Do
 
 
 #----------deapreciated-----------#
-def get_client(_Pika_):
-    global a
-    if _Pika_ == "STRING_SESSION":
-        a = "**MAINCLIENT**"
-    elif _Pika_ == "STR2":
-        a = "**MULTICLIENT1**"
-    elif _Pika_ == "STR3":
-        a = "**MULTICLIENT2**"
-    elif _Pika_ == "STR4":
-        a = "**MULTICLIENT3**"
-    return a
-#----------deapreciated-----------#
-
-
-def PikaClient(session, gBot=None):
-    if gBot:
-        return TelegramClient(
-            "TgBot",
-            pdb.Api_id,
-            pdb.Api_hash).start(
-            bot_token=session)
-    else:
-        return TelegramClient(
-            StringSession(session),
-            pdb.Api_id,
-            pdb.Api_hash,
-            connection_retries=None,
-            auto_reconnect=True,
-            lang_code='en')
-
 
 def get_cl(_PiKa_):
     if _Pika_ == "alpha":
