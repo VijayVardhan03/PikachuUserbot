@@ -2,6 +2,46 @@
 from ...clients import *
 from var import Var
 
+try:
+    from . import bot, bot2, bot3, bot4
+    i1 = bot.uid
+    i2 = bot2.uid
+    i3 = bot3.uid
+    i4 = bot4.uid
+
+except BaseException:
+    pass
+
+if bot is not None:
+    pika_id1 = i1
+else:
+    pika_id1 = 1111
+if bot2 is not None:
+    pika_id2 = i2
+else:
+    pika_id2 = 1011
+if bot3 is not None:
+    pika_id3 = i3
+else:
+    pika_id3 = 1010
+if bot4 is not None:
+    pika_id4 = i4
+else:
+    pika_id4 = 1001
+
+
+async def auto_var(_pika_, value):
+  __id__=await get_pika_id(_pika_)
+  if __id__==i1:
+     a="alpha"
+  if __id__==i2:
+     a="beta"
+  if __id__==i3:
+     a="gaama" 
+  if __id__==i4:
+     a="delta"
+  return pget(a, value)
+  
 async def pika_msg(_pika, text, _pika_=None, parse_mode=None, link_preview=None):
   parse_mode = parse_mode or "md"; link_preview = link_preview or False
   if _pika_ is None:
