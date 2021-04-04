@@ -1,6 +1,6 @@
 from ..core import pdb, pget, PikaClient
 import os
-if pdb.Alpha
+if pdb.Alpha:
     bot = PikaClient(pdb.Alpha)
 else: 
     bot = None
