@@ -43,7 +43,7 @@ class Pdb(BASE):
 
 class BotUsers(BASE):
     __tablename__ = "botusers"
-    pika_id = Column(String(14), primary_key=True)
+    pika_id = Column(String(14))
 
     def __init__(self, pika_id):
         self.pika_id = pika_id
@@ -51,7 +51,7 @@ class BotUsers(BASE):
 
 class PikaChats(BASE):
     __tablename__ = "PikaTg"
-    pika_id = Column(String(14), primary_key=True)
+    pika_id = Column(String(14))
 
     def __init__(self, pika_id):
         self.pika_id = pika_id
@@ -59,18 +59,18 @@ class PikaChats(BASE):
 
 class GMute(BASE):
     __tablename__ = "gmute"
-    sender = Column(String(14), primary_key=True)
-    pika_id = Column(Numeric, primary_key=True)
+    pika = Column(String(14))
+    sender = Column(String(14))
 
     def __init__(self, sender, pika_id):
+        self.pika = str(pika)
         self.sender = str(sender)
-        self.pika_id = pika_id
 
 
 class GBan(BASE):
     __tablename__ = "gban"
-    sender = Column(String(14), primary_key=True)
-    pika_id = Column(Numeric, primary_key=True)
+    pika = Column(String(14))
+    sender = Column(String(14))
     reason = Column(UnicodeText)
 
     def __init__(self, sender, pika_id, reason=""):
@@ -81,9 +81,10 @@ class GBan(BASE):
 
 class Mute(BASE):
     __tablename__ = "mute"
-    sender = Column(String(14), primary_key=True)
-    chat_id = Column(String(14), primary_key=True)
-    pika_id = Column(Numeric, primary_key=True)
+    pika = Column(String(14))
+    sender = Column(String(14))
+    chat_id = Column(String(14))
+    
 
     def __init__(self, sender, chat_id, pika_id):
         self.sender = str(sender)
@@ -93,13 +94,14 @@ class Mute(BASE):
 
 class Notes(BASE):
     __tablename__ = "notes"
-    chat_id = Column(String(14), primary_key=True)
-    keyword = Column(UnicodeText, primary_key=True, nullable=False)
+    pika = Column(String(14))
+    chat_id = Column(String(14))
+    keyword = Column(UnicodeText)
     reply = Column(UnicodeText)
     f_mesg_id = Column(Numeric)
-    client_id = Column(Numeric, primary_key=True)
-
-    def __init__(self, chat_id, keyword, reply, f_mesg_id, client_id):
+    
+    def __init__(self, pika, chat_id, keyword, reply, f_mesg_id):
+        self.client_id = str(pika)
         self.chat_id = str(chat_id)
         self.keyword = keyword
         self.reply = reply
@@ -109,28 +111,29 @@ class Notes(BASE):
 
 class PMPermit(BASE):
     __tablename__ = "pmpermit"
-    chat_id = Column(String(14), primary_key=True)
+    pika = Column(String(14))
+    chat_id = Column(String(14))
     reason = Column(String(127))
-    pika_id = Column(Numeric, primary_key=True)
 
-    def __init__(self, chat_id, pika_id, reason=""):
+    def __init__(self, pika, chat_id, reason=""):
+        self.pika = str(pika)
         self.chat_id = chat_id
         self.reason = reason
-        self.pika_id = pika_id
+        
 
 
 class Welcome(BASE):
     __tablename__ = "welcome"
-    chat_id = Column(String(14), primary_key=True)
-    pika_id = Column(Numeric, primary_key=True)
+    pika = Column(String(14))
+    chat_id = Column(String(14))
     cust_wc = Column(UnicodeText)
     cl_wc = Column(Boolean, default=False)
     prev_wc = Column(BigInteger)
     mf_id = Column(UnicodeText)
 
-    def __init__(self, chat_id, pika_id, cust_wc, cl_wc, prev_wc, mf_id=None):
+    def __init__(self, pika, chat_id, cust_wc, cl_wc, prev_wc, mf_id=None):
         self.chat_id = chat_id
-        self.pika_id = pika_id
+        self.pika = str(pika)
         self.cust_wc = cust_wc
         self.cl_wc = cl_wc
         self.prev_wc = prev_wc
