@@ -1,5 +1,7 @@
 
 from ...clients import *
+from var import Var
+
 async def pika_msg(_pika, text, _pika_=None, parse_mode=None, link_preview=None):
   parse_mode = parse_mode or "md"; link_preview = link_preview or False
   if _pika_ is None:
