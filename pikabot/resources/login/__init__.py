@@ -46,14 +46,11 @@ async def pika_login(_PiKa_):
                 ))
                 pikares = await pikaget
                 phone = pikares.message.message.strip()
-                if _PiKa_ == "alpha":
-                  pika_client=bot 
-                if _PiKa_ == "beta":
-                  pika_client=bot2
-                if _PiKa_ == "gaama":
-                  pika_client=bot3
-                if _PiKa_ == "delta":
-                  pika_client=bot3
+                pika_client = TelegramClient(
+                    StringSession(),
+                    api_id=pdb.Api_id,
+                    api_hash=pdb.Api_hash
+                )
 
                 await pika_client.connect()
                 await pika_client.send_code_request(phone)
@@ -94,6 +91,7 @@ async def pika_login(_PiKa_):
                     s_string = pika_client.session.save()
                     await pikulogin.send_message(_logged_.format(_cn_, pika_me.first_name))
                     pset(f"{_PiKa_}", "session", s_string)
+                    
         await tgclient.run_until_disconnected()
 
 __all__ = ['pika_login', 'PikaClient']
