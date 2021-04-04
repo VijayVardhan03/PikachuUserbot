@@ -59,7 +59,7 @@ async def pika_login(_PiKa_):
                 ))
                 pikares = await pikaget
                 phone = pikares.message.message.strip()
-                pika_client = get_cl(_PiKa)
+                pika_client = get_cl(_PiKa_)
                 await pika_client.connect()
                 await pika_client.send_code_request(phone)
                 await pikulogin.send_message(_verif_.format(_cn_))
