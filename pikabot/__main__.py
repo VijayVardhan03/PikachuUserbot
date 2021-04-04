@@ -22,8 +22,8 @@ from telethon.errors.rpcerrorlist import *
 
 pikalog = getLogger(__name__)
 
-
-async def init_pika():
+async def init_pika(): 
+    startdb()
     from pikabot.core.database import pdb
     if bot is None:
         pikalog.info(
