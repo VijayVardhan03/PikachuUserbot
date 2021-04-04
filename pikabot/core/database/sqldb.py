@@ -28,6 +28,19 @@ def start() -> scoped_session:
 BASE = declarative_base()
 SESSION = start()
 
+
+class Pdb(BASE):
+    __tablename__ = "pdb"
+    client = Column(String, primary_key=True, nullable=False)
+    var = Column(String)
+    value = Column(UnicodeText)
+
+    def __init__(self, client, var, value):
+        self.client = str(client)
+        self.var = str(var)
+        self.value = value
+
+
 class BotUsers(BASE):
     __tablename__ = "botusers"
     pika_id = Column(String(14), primary_key=True)
@@ -35,7 +48,6 @@ class BotUsers(BASE):
     def __init__(self, pika_id):
         self.pika_id = pika_id
 
-BotUsers.__table__.create(checkfirst=True)
 
 class PikaChats(BASE):
     __tablename__ = "PikaTg"
@@ -44,7 +56,6 @@ class PikaChats(BASE):
     def __init__(self, pika_id):
         self.pika_id = pika_id
 
-PikaChats.__table__.create(checkfirst=True)
 
 class GMute(BASE):
     __tablename__ = "gmute"
@@ -55,7 +66,6 @@ class GMute(BASE):
         self.sender = str(sender)
         self.pika_id = pika_id
 
-GMute.__table__.create(checkfirst=True)
 
 class GBan(BASE):
     __tablename__ = "gban"
@@ -68,7 +78,6 @@ class GBan(BASE):
         self.pika_id = str(pika_id)
         self.reason = reason
 
-GBan.__table__.create(checkfirst=True)
 
 class Mute(BASE):
     __tablename__ = "mute"
@@ -81,7 +90,6 @@ class Mute(BASE):
         self.chat_id = str(chat_id)
         self.pika_id = pika_id
 
-Mute.__table__.create(checkfirst=True)
 
 class Notes(BASE):
     __tablename__ = "notes"
@@ -98,7 +106,6 @@ class Notes(BASE):
         self.f_mesg_id = f_mesg_id
         self.client_id = client_id
 
-Notes.__table__.create(checkfirst=True)
 
 class PMPermit(BASE):
     __tablename__ = "pmpermit"
@@ -111,7 +118,6 @@ class PMPermit(BASE):
         self.reason = reason
         self.pika_id = pika_id
 
-PMPermit.__table__.create(checkfirst=True)
 
 class Welcome(BASE):
     __tablename__ = "welcome"
@@ -130,14 +136,23 @@ class Welcome(BASE):
         self.prev_wc = prev_wc
         self.mf_id = mf_id
 
+
+Pdb.__table__.create(checkfirst=True)
+Mute.__table__.create(checkfirst=True)
+BotUsers.__table__.create(checkfirst=True)
+PikaChats.__table__.create(checkfirst=True)
+GMute.__table__.create(checkfirst=True)
+GBan.__table__.create(checkfirst=True)
+Notes.__table__.create(checkfirst=True)
+PMPermit.__table__.create(checkfirst=True)
 Welcome.__table__.create(checkfirst=True)
 
 
 def pget(client, var):
     try:
-        return SESSION.query(PBD).filter(
-            PBD.client == str(client),
-            PBD.var == str(var)).first().value
+        return SESSION.query(Pdb).filter(
+            Pdb.client == str(client),
+            Pdb.var == str(var)).first().value
     except BaseException:
         return None
     finally:
@@ -145,19 +160,19 @@ def pget(client, var):
 
 
 def pset(client, var, value):
-    if SESSION.query(PBD).filter(
-            PBD.client == str(client),
-            PBD.var == str(var)).one_or_none():
-        Pdel(client, var)
-    adder = PBD(str(client), str(var), value)
+    if SESSION.query(Pdb).filter(
+            Pdb.client == str(client),
+            Pdb.var == str(var)).one_or_none():
+        pdel(client, var)
+    adder = Pdb(str(client), str(var), value)
     SESSION.add(adder)
     SESSION.commit()
 
 
 def pdel(client, var):
-    rem = SESSION.query(PBD).filter(
-        PBD.client == str(client),
-        PBD.var == str(var)) .delete(
+    rem = SESSION.query(Pdb).filter(
+        Pdb.client == str(client),
+        Pdb.var == str(var)).delete(
         synchronize_session="fetch")
     if rem:
         SESSION.commit()
@@ -398,3 +413,14 @@ def get_added_users():
     return pika
 
 
+class pdb(object):
+    Api_id = _get("API_ID")
+    Api_hash = _get("API_HASH")
+    Bf_uname = _get("TG_BOT_USER_NAME_BF_HER")
+    Omega = _get("TG_BOT_TOKEN_BF_HER")
+    Alpha = pget("alpha", "session")
+    Beta = pget("beta", "session")
+    Gaama = pget("gaama", "session")
+    Delta = pget("delta", "session")
+    Asstt = pget("omega", "assistant")
+    Botlog_chat = int(_get("BOTLOG_CHATID"))
