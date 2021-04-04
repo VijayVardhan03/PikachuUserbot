@@ -5,6 +5,7 @@ from ...clients import bot, bot2, bot3, bot4, tgbot
 
 async def auto_var(_pika_, value):
   __id__=await get_pika_id(_pika_)
+  a=None 
   if bot:
     i1 = bot.uid
   else:
