@@ -2,30 +2,30 @@ from var import Var
 from ...core import pget
 try:
     from ...clients import bot, bot2, bot3, bot4, tgbot
-    i1 = bot.uid
-    i2 = bot2.uid
-    i3 = bot3.uid
-    i4 = bot4.uid
+    id1 = bot.uid
+    id2 = bot2.uid
+    id3 = bot3.uid
+    id4 = bot4.uid
 
 except BaseException:
     pass
 
 if bot is not None:
-    pika_id1 = i1
+    i1 = id1
 else:
-    pika_id1 = 1111
+    i1 = 1111
 if bot2 is not None:
-    pika_id2 = i2
+    i2 = id2
 else:
-    pika_id2 = 1011
+    i2 = 1011
 if bot3 is not None:
-    pika_id3 = i3
+    i3 = id3
 else:
-    pika_id3 = 1010
+    i3 = 1010
 if bot4 is not None:
-    pika_id4 = i4
+    i4 = id4
 else:
-    pika_id4 = 1001
+    i4 = 1001
 
 
 async def auto_var(_pika_, value):
