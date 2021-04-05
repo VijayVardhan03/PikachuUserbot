@@ -31,12 +31,12 @@ SESSION = start()
 
 class Pdb(BASE):
     __tablename__ = "pdb"
-    client = Column(String)
+    pika = Column(String)
     var = Column(String)
     value = Column(UnicodeText)
 
-    def __init__(self, client, var, value):
-        self.client = str(client)
+    def __init__(self, pika, var, value):
+        self.pika = str(pika)
         self.var = str(var)
         self.value = value
 
@@ -62,7 +62,7 @@ class GMute(BASE):
     pika = Column(String(14))
     sender = Column(String(14))
 
-    def __init__(self, sender, pika_id):
+    def __init__(self, pika, sender):
         self.pika = str(pika)
         self.sender = str(sender)
 
@@ -73,9 +73,9 @@ class GBan(BASE):
     sender = Column(String(14))
     reason = Column(UnicodeText)
 
-    def __init__(self, sender, pika_id, reason=""):
+    def __init__(self, pika, sender, reason=""):
+        self.pika = str(pika)
         self.sender = str(sender)
-        self.pika_id = str(pika_id)
         self.reason = reason
 
 
@@ -86,10 +86,11 @@ class Mute(BASE):
     chat_id = Column(String(14))
     
 
-    def __init__(self, sender, chat_id, pika_id):
+    def __init__(self, pika, sender, chat_id):
+        self.pika = str(pika)
         self.sender = str(sender)
         self.chat_id = str(chat_id)
-        self.pika_id = pika_id
+        
 
 
 class Notes(BASE):
@@ -101,7 +102,7 @@ class Notes(BASE):
     f_mesg_id = Column(Numeric)
     
     def __init__(self, pika, chat_id, keyword, reply, f_mesg_id):
-        self.client_id = str(pika)
+        self.pika = str(pika)
         self.chat_id = str(chat_id)
         self.keyword = keyword
         self.reply = reply
@@ -132,8 +133,8 @@ class Welcome(BASE):
     mf_id = Column(UnicodeText)
 
     def __init__(self, pika, chat_id, cust_wc, cl_wc, prev_wc, mf_id=None):
-        self.chat_id = chat_id
         self.pika = str(pika)
+        self.chat_id = chat_id
         self.cust_wc = cust_wc
         self.cl_wc = cl_wc
         self.prev_wc = prev_wc
@@ -151,10 +152,10 @@ PMPermit.__table__.create(checkfirst=True)
 Welcome.__table__.create(checkfirst=True)
 
 
-def pget(client, var):
+def pget(pika, var):
     try:
         return SESSION.query(Pdb).filter(
-            Pdb.client == str(client),
+            Pdb.pika == str(pika),
             Pdb.var == str(var)).first().value
     except BaseException:
         return None
@@ -162,47 +163,47 @@ def pget(client, var):
         SESSION.close()
 
 
-def pset(client, var, value):
+def pset(pika, var, value):
     if SESSION.query(Pdb).filter(
-            Pdb.client == str(client),
+            Pdb.pika == str(pika),
             Pdb.var == str(var)).one_or_none():
         pdel(client, var)
-    adder = Pdb(str(client), str(var), value)
+    adder = Pdb(str(pika), str(var), value)
     SESSION.add(adder)
     SESSION.commit()
 
 
-def pdel(client, var):
+def pdel(pika, var):
     rem = SESSION.query(Pdb).filter(
-        Pdb.client == str(client),
+        Pdb.pika == str(pika),
         Pdb.var == str(var)).delete(
         synchronize_session="fetch")
     if rem:
         SESSION.commit()
 
 
-def add_welcome(chat_id, pika_id, cust_wc, cl_wc, prev_wc, mf_id):
-    add_wc = Welcome(chat_id, pika_id, cust_wc, cl_wc, prev_wc, mf_id)
+def add_welcome(pika, chat_id, cust_wc, cl_wc, prev_wc, mf_id):
+    add_wc = Welcome(pika, chat_id, cust_wc, cl_wc, prev_wc, mf_id)
     SESSION.add(add_wc)
     SESSION.commit()
 
 
-def remove_welcome(chat_id, pika_id):
-    rm_wc = SESSION.query(Welcome).get((str(chat_id), pika_id))
+def remove_welcome(pika, chat_id):
+    rm_wc = SESSION.query(Welcome).get((str(pika), str(chat_id)))
     if rm_wc:
         SESSION.delete(rm_wc)
         SESSION.commit()
 
 
-def upd_prev_welcome(chat_id, pika_id, prev_wc):
-    _update = SESSION.query(Welcome).get((str(chat_id), pika_id))
+def upd_prev_welcome(pika, chat_id, prev_wc):
+    _update = SESSION.query(Welcome).get((str(pika), str(chat_id)))
     _update.prev_wc = prev_wc
     SESSION.commit()
 
 
-def get_welcome(chat_id, pika_id):
+def get_welcome(pika, chat_id):
     try:
-        return SESSION.query(Welcome).get((str(chat_id), pika_id))
+        return SESSION.query(Welcome).get((str(pika), str(chat_id)))
     except Exception as e:
         pikalog.error(str(e))
         return
@@ -210,132 +211,132 @@ def get_welcome(chat_id, pika_id):
         SESSION.close()
 
 
-def clean_welcome(chat_id, pika_id, cl_wc):
-    clnn = SESSION.query(Welcome).get((str(chat_id), pika_id))
+def clean_welcome(pika, chat_id, cl_wc):
+    clnn = SESSION.query(Welcome).get((str(pika), str(chat_id)))
     clnn.cl_wc = cl_wc
     SESSION.commit()
 
 
-def approve(chat_id, pika_id, reason):
-    adder = PMPermit(str(chat_id), pika_id, str(reason))
+def approve(pika, chat_id, reason):
+    adder = PMPermit(str(pika), str(chat_id), str(reason))
     SESSION.add(adder)
     SESSION.commit()
 
 
-def disapprove(chat_id, pika_id):
-    rem = SESSION.query(PMPermit).get((str(chat_id), pika_id))
+def disapprove(pika, chat_id):
+    rem = SESSION.query(PMPermit).get((str(pika), str(chat_id)))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
 
 
-def get_all_approved(pika_id):
-    rem = SESSION.query(PMPermit).filter(PMPermit.pika_id == pika_id).all()
+def get_all_approved(pika):
+    rem = SESSION.query(PMPermit).filter(PMPermit.pika == pika).all()
     SESSION.close()
     return rem
 
 
-def is_approved(chat_id, pika_id):
+def is_approved(pika, chat_id):
     try:
         return SESSION.query(PMPermit).filter(
-            PMPermit.chat_id == str(chat_id),
-            PMPermit.pika_id == pika_id).one()
+            PMPermit.pika == str(pika),
+            PMPermit.chat_id == str(chat_id)).one()
     except BaseException:
         return None
     finally:
         SESSION.close()
 
 
-def get_note(chat_id, keyword, client_id):
+def get_note(pika, chat_id, keyword):
     try:
-        return SESSION.query(Notes).get((str(chat_id), keyword, client_id))
+        return SESSION.query(Notes).get((str(pika), str(chat_id), keyword))
     finally:
         SESSION.close()
 
 
-def get_notes(chat_id, client_id):
+def get_notes(pika, chat_id):
     try:
         return SESSION.query(Notes).filter(
-            Notes.chat_id == str(chat_id),
-            Notes.client_id == client_id).all()
+            Notes.pika == str(pika),
+            Notes.chat_id == str(chat_id)).all()
     except BaseException:
         return None
     finally:
         SESSION.close()
 
 
-def add_note(chat_id, keyword, reply, f_mesg_id, client_id):
-    to_check = get_note(chat_id, keyword, client_id)
+def add_note(pika, chat_id, keyword, reply, f_mesg_id):
+    to_check = get_note(pika, chat_id, keyword)
     if not to_check:
-        adder = Notes(str(chat_id), keyword, reply, f_mesg_id, client_id)
+        adder = Notes(str(pika), str(chat_id), keyword, reply, f_mesg_id)
         SESSION.add(adder)
         SESSION.commit()
         return True
     else:
-        rem = SESSION.query(Notes).get((str(chat_id), keyword, client_id))
+        rem = SESSION.query(Notes).get((str(pika), str(chat_id), keyword))
         SESSION.delete(rem)
         SESSION.commit()
-        adder = Notes(str(chat_id), keyword, reply, f_mesg_id, client_id)
+        adder = Notes(str(pika), str(chat_id), keyword, reply, f_mesg_id)
         SESSION.add(adder)
         SESSION.commit()
         return False
 
 
-def rm_note(chat_id, keyword, client_id):
-    to_check = get_note(chat_id, keyword, client_id)
+def rm_note(pika, chat_id, keyword):
+    to_check = get_note(pika, chat_id, keyword)
     if not to_check:
         return False
     else:
-        rem = SESSION.query(Notes).get((str(chat_id), keyword, client_id))
+        rem = SESSION.query(Notes).get((str(pika), str(chat_id), keyword by))
         SESSION.delete(rem)
         SESSION.commit()
         return True
 
 
-def is_muted(sender, chat_id, pika_id):
-    user = SESSION.query(Mute).get((str(sender), str(chat_id), pika_id))
+def is_muted(pika, sender, chat_id):
+    user = SESSION.query(Mute).get((str(pika), str(sender), str(chat_id)))
     if user:
         return True
     else:
         return False
 
 
-def mute(sender, chat_id, pika_id):
-    adder = Mute(str(sender), str(chat_id), pika_id)
+def mute(pika, sender, chat_id):
+    adder = Mute(str(pika), str(sender), str(chat_id))
     SESSION.add(adder)
     SESSION.commit()
 
 
-def unmute(sender, chat_id, pika_id):
-    rem = SESSION.query(Mute).get((str(sender), str(chat_id), pika_id))
+def unmute(pika, sender, chat_id):
+    rem = SESSION.query(Mute).get((str(pika), str(sender), str(chat_id)))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
 
 
-def get_all_muted(pika_id):
-    rem = SESSION.query(Mute).filter(Notes.pika_id == pika_id).all()
+def get_all_muted(pika):
+    rem = SESSION.query(Mute).filter(Notes.pika == pika).all()
     SESSION.close()
     return rem
 
 
-def is_gbanned(sender, pika_id):
+def is_gbanned(pika, sender):
     try:
-        _pikaG = SESSION.query(GBan).get((str(sender), str(pika_id)))
+        _pikaG = SESSION.query(GBan).get((str(pika), str(sender)))
         if _pikaG:
             return str(_pikaG.reason)
     finally:
         SESSION.close()
 
 
-def gban(sender, pika_id, reason):
-    adder = GBan(str(sender), str(pika_id), str(reason))
+def gban(pika, sender, reason):
+    adder = GBan(str(pika), str(sender), str(reason))
     SESSION.add(adder)
     SESSION.commit()
 
 
-def ungban(sender, pika_id):
-    rem = SESSION.query(GBan).get((str(sender), str(pika_id)))
+def ungban(pika, sender, pika_id):
+    rem = SESSION.query(GBan).get((str(pika), str(sender)))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
@@ -350,14 +351,14 @@ def is_gmuted(sender):
         SESSION.close()
 
 
-def gmute(sender, pika_id):
-    adder = GMute(str(sender), pika_id)
+def gmute(pika, sender):
+    adder = GMute(str(pika), str(sender))
     SESSION.add(adder)
     SESSION.commit()
 
 
-def ungmute(sender, pika_id):
-    rem = SESSION.query(GMute).get((str(sender), pika_id))
+def ungmute(pika, sender):
+    rem = SESSION.query(GMute).get((str(pika), str(sender)))
     if rem:
         SESSION.delete(rem)
         SESSION.commit()
