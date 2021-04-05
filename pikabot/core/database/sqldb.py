@@ -583,3 +583,5 @@ class pdb(object):
     Delta = pget("delta", "session")
     Asstt = pget("omega", "assistant")
     Botlog_chat = int(_get("BOTLOG_CHATID"))
+    Ytapi = pget("omega", "ytapi")
+    Gdtoken = pget("omega", "gdtoken")
