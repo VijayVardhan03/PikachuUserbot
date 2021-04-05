@@ -32,7 +32,7 @@ SESSION = start()
 class Pdb(BASE):
     __tablename__ = "pdb"
     pika = Column(String(14))
-    var = Column(String(14), primary_key=True)
+    var = Column(String(14), primary_key=True, autoincrement=True)
     value = Column(UnicodeText)
 
     def __init__(self, pika, var, value):
