@@ -167,7 +167,7 @@ def pset(pika, var, value):
     if SESSION.query(Pdb).filter(
             Pdb.pika == str(pika),
             Pdb.var == str(var)).one_or_none():
-        pdel(client, var)
+        pdel(pika, var)
     adder = Pdb(str(pika), str(var), value)
     SESSION.add(adder)
     SESSION.commit()
