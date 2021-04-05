@@ -12,7 +12,7 @@ from pikabot import *
 from sys import *
 from var import Var
 from pathlib import Path
-import re
+import re, time
 import sys
 
 
