@@ -1,4 +1,4 @@
-import time;import os;from pikabot import UpTime;from var import Var 
+import time;import os;from var import Var 
 import telethon, platform
 sys1 = (platform.python_version()) 
 sys2 = "2.1 Stable" 
@@ -32,3 +32,4 @@ apic="https://telegra.ph/file/891421e264af0ebc5c902.mp4"
 helpstr=f"\n\nPikabot Helper to reveal all the plugins, Just tap on button and reveal....\n\n✧ Repo : [Github]({sys4})\n✧ Website : [Here]({web})"
 
 alivestr="•This is \n       ╔═╦╦╗───╔╗──╔╗\n       ║╬╠╣╠╦═╗║╚╦═╣╚╗\n       ║╔╣║═╣╬╚╣╬║╬║╔╣\n       ╚╝╚╩╩╩══╩═╩═╩═╝\n**Alive Time** : {}⌚\n\n✨ Telethon Version ☞ {}\n✨ Python Version ☞ {}\n✨ Pika Os ☞ {}\n✨ Pika Plugins ☞ {}\n✨ Support Channel ☞ {}\n✨ Support group ☞ {}\n✨ Multiclients ☞ {}\n\n👨‍💻**Servent of My Master**  ☞ {}".format(upt,sys5,sys1,sys2,sys3,chnl,sys6,stats,con)
+__all__ = ['web', 'chnl', 'apic', 'stats', 'sys1', 'sys2', 'sys3', 'sys4', 'sys5', 'sys6', 'sys7', 'sys8'] 
