@@ -147,6 +147,35 @@ class Welcome(BASE):
         self.prev_wc = prev_wc
         self.mf_id = mf_id
 
+class Filters(BASE):
+    __tablename__ = "filters"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14)
+    chat_id = Column(String(14))
+    keyword = Column(UnicodeText)
+    reply = Column(UnicodeText)
+    snip_type = Column(Numeric)
+    media_id = Column(UnicodeText)
+    media_access_hash = Column(UnicodeText)
+    media_file_reference = Column(LargeBinary)
+
+    def __init__(
+        self,
+        pika, 
+        chat_id,
+        keyword, reply, snip_type,
+        media_id=None, media_access_hash=None, media_file_reference=None
+    ):
+        self.pika = pika
+        self.chat_id = chat_id
+        self.keyword = keyword
+        self.reply = reply
+        self.snip_type = snip_type
+        self.media_id = media_id
+        self.media_access_hash = media_access_hash
+        self.media_file_reference = media_file_reference
+
+
 
 Pdb.__table__.create(checkfirst=True)
 Mute.__table__.create(checkfirst=True)
@@ -157,7 +186,7 @@ GBan.__table__.create(checkfirst=True)
 Notes.__table__.create(checkfirst=True)
 PMPermit.__table__.create(checkfirst=True)
 Welcome.__table__.create(checkfirst=True)
-
+Filters.__table__.create(checkfirst=True)
 
 def pget(pika, var):
     try:
@@ -423,6 +452,51 @@ def get_added_users():
     SESSION.close()
     return pika
 
+def get_filter(pika, chat_id, keyword):
+    try:
+        return SESSION.query(Filters).get((str(pika), str(chat_id), keyword))
+    except:
+        return None
+    finally:
+        SESSION.close()
+
+
+def get_all_filters(pika, chat_id):
+    try:
+        return SESSION.query(Filters).filter(Filters.pika = str(pika), Filters.chat_id == str(chat_id)).all()
+    except:
+        return None
+    finally:
+        SESSION.close()
+
+
+def add_filter(pika, chat_id, keyword, reply, snip_type, media_id, media_access_hash, media_file_reference):
+    adder = SESSION.query(Filters).get((str(pika), str(chat_id), keyword))
+    if adder:
+        adder.reply = reply
+        adder.snip_type = snip_type
+        adder.media_id = media_id
+        adder.media_access_hash = media_access_hash
+        adder.media_file_reference = media_file_reference
+    else:
+        adder = Filters(pika, chat_id, keyword, reply, snip_type, media_id,
+                        media_access_hash, media_file_reference)
+    SESSION.add(adder)
+    SESSION.commit()
+
+
+def remove_filter(pika, chat_id, keyword):
+    saved_filter = SESSION.query(Filters).get((str(pika), str(chat_id), keyword))
+    if saved_filter:
+        SESSION.delete(saved_filter)
+        SESSION.commit()
+
+
+def remove_all_filters(chat_id):
+    saved_filter = SESSION.query(Filters).filter(Filters.pika=str(pika), Filters.chat_id == str(chat_id))
+    if saved_filter:
+        saved_filter.delete()
+        SESSION.commit()
 
 class pdb(object):
     Api_id = _get("API_ID")
