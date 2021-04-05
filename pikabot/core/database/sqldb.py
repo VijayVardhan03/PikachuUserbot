@@ -287,7 +287,7 @@ def rm_note(pika, chat_id, keyword):
     if not to_check:
         return False
     else:
-        rem = SESSION.query(Notes).get((str(pika), str(chat_id), keyword by))
+        rem = SESSION.query(Notes).get((str(pika), str(chat_id), keyword))
         SESSION.delete(rem)
         SESSION.commit()
         return True
