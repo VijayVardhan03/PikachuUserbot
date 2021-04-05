@@ -60,7 +60,8 @@ class PikaChats(BASE):
 
 class GMute(BASE):
     __tablename__ = "gmute"
-    pika = Column(String(14), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14))
     sender = Column(String(14))
 
     def __init__(self, pika, sender):
@@ -70,7 +71,8 @@ class GMute(BASE):
 
 class GBan(BASE):
     __tablename__ = "gban"
-    pika = Column(String(14), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14))
     sender = Column(String(14))
     reason = Column(UnicodeText)
 
@@ -82,7 +84,8 @@ class GBan(BASE):
 
 class Mute(BASE):
     __tablename__ = "mute"
-    pika = Column(String(14), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14))
     sender = Column(String(14))
     chat_id = Column(String(14))
     
@@ -96,7 +99,8 @@ class Mute(BASE):
 
 class Notes(BASE):
     __tablename__ = "notes"
-    pika = Column(String(14), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14))
     chat_id = Column(String(14))
     keyword = Column(UnicodeText)
     reply = Column(UnicodeText)
@@ -113,7 +117,8 @@ class Notes(BASE):
 
 class PMPermit(BASE):
     __tablename__ = "pmpermit"
-    pika = Column(String(14), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14))
     chat_id = Column(String(14))
     reason = Column(String(127))
 
@@ -126,7 +131,8 @@ class PMPermit(BASE):
 
 class Welcome(BASE):
     __tablename__ = "welcome"
-    pika = Column(String(14), primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    pika = Column(String(14))
     chat_id = Column(String(14))
     cust_wc = Column(UnicodeText)
     cl_wc = Column(Boolean, default=False)
