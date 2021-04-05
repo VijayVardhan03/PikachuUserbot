@@ -124,6 +124,7 @@ async def init_pika():
             await pika_msg(_logpika, msg)
             msg += "**Pikabot Started Sucessfully**"
             await pika_msg(_logpika, msg)
+            rawtm['time']=time.time()
 
         if len(argv) not in (1, 3, 4):
             if bot:
