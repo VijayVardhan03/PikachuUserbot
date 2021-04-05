@@ -43,7 +43,7 @@ class Pdb(BASE):
 
 class BotUsers(BASE):
     __tablename__ = "botusers"
-    pika_id = Column(String(14))
+    pika_id = Column(String(14), primary_key=True)
 
     def __init__(self, pika_id):
         self.pika_id = pika_id
@@ -51,7 +51,7 @@ class BotUsers(BASE):
 
 class PikaChats(BASE):
     __tablename__ = "PikaTg"
-    pika_id = Column(String(14))
+    pika_id = Column(String(14), primary_key=True)
 
     def __init__(self, pika_id):
         self.pika_id = pika_id
