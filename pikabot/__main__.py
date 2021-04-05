@@ -19,7 +19,7 @@ from logging import getLogger
 from telethon.tl.types import *
 import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
-
+import time
 pikalog = getLogger(__name__)
 
 async def init_pika(): 
