@@ -1,5 +1,6 @@
 import time;import os;from var import Var 
 import telethon, platform
+from pikabot import pdb
 sys1 = (platform.python_version()) 
 sys2 = "2.1 Stable" 
 sys3 = "1.0 Stable"
