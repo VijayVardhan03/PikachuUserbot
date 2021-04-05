@@ -9,7 +9,7 @@
 #
 # All rights reserved
 
-from . import pika_msg, pika_login, bot, bot2, bot3, bot4, tgbot
+from . import pika_msg, pika_login, bot, bot2, bot3, bot4, tgbot, rawtm
 from .resources.logit import *
 from sys import *
 import asyncio, os
