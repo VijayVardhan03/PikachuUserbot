@@ -2,8 +2,7 @@ from var import Var
 from ...core import pget
 from ...clients import bot, bot2, bot3, bot4, tgbot
     
-
-async def auto_var(_pika_, value):
+async def auto_var(_pika_, value=None):
   __id__=await get_pika_id(_pika_)
   a=None 
   if bot:
@@ -22,6 +21,7 @@ async def auto_var(_pika_, value):
     i4 = bot4.uid
   else:
     i4 = 1001
+
   if __id__==i1:
      a="alpha"
   if __id__==i2:
@@ -30,8 +30,11 @@ async def auto_var(_pika_, value):
      a="gaama" 
   if __id__==i4:
      a="delta"
-  return pget(a, value)
-  
+
+  if value is not None: 
+      return pget(a, value)
+  else: 
+      return a
 async def pika_msg(_pika, text, _pika_=None, parse_mode=None, link_preview=None):
   parse_mode = parse_mode or "md"; link_preview = link_preview or False
   if _pika_ is None:
