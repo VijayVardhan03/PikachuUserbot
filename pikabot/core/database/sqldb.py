@@ -485,7 +485,7 @@ def get_filter(pika, chat_id, keyword):
 
 def get_all_filters(pika, chat_id):
     try:
-        return SESSION.query(Filters).filter(Filters.pika = str(pika), Filters.chat_id == str(chat_id)).all()
+        return SESSION.query(Filters).filter(Filters.pika == str(pika), Filters.chat_id == str(chat_id)).all()
     except:
         return None
     finally:
@@ -515,7 +515,7 @@ def remove_filter(pika, chat_id, keyword):
 
 
 def remove_all_filters(chat_id):
-    saved_filter = SESSION.query(Filters).filter(Filters.pika=str(pika), Filters.chat_id == str(chat_id))
+    saved_filter = SESSION.query(Filters).filter(Filters.pika == str(pika), Filters.chat_id == str(chat_id))
     if saved_filter:
         saved_filter.delete()
         SESSION.commit()
