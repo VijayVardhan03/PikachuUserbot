@@ -150,7 +150,7 @@ class Welcome(BASE):
 class Filters(BASE):
     __tablename__ = "filters"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    pika = Column(String(14)
+    pika = Column(String(14))
     chat_id = Column(String(14))
     keyword = Column(UnicodeText)
     reply = Column(UnicodeText)
