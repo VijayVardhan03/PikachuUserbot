@@ -31,7 +31,7 @@ SESSION = start()
 
 class Pdb(BASE):
     __tablename__ = "pdb"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     var = Column(String(14))
     value = Column(UnicodeText)
@@ -60,7 +60,7 @@ class PikaChats(BASE):
 
 class GMute(BASE):
     __tablename__ = "gmute"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     sender = Column(String(14))
 
@@ -71,7 +71,7 @@ class GMute(BASE):
 
 class GBan(BASE):
     __tablename__ = "gban"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     sender = Column(String(14))
     reason = Column(UnicodeText)
@@ -84,7 +84,7 @@ class GBan(BASE):
 
 class Mute(BASE):
     __tablename__ = "mute"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     sender = Column(String(14))
     chat_id = Column(String(14))
@@ -99,7 +99,7 @@ class Mute(BASE):
 
 class Notes(BASE):
     __tablename__ = "notes"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     chat_id = Column(String(14))
     keyword = Column(UnicodeText)
@@ -117,7 +117,7 @@ class Notes(BASE):
 
 class PMPermit(BASE):
     __tablename__ = "pmpermit"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     chat_id = Column(String(14))
     reason = Column(String(127))
@@ -131,7 +131,7 @@ class PMPermit(BASE):
 
 class Welcome(BASE):
     __tablename__ = "welcome"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     chat_id = Column(String(14))
     cust_wc = Column(UnicodeText)
@@ -149,7 +149,7 @@ class Welcome(BASE):
 
 class Filters(BASE):
     __tablename__ = "filters"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     pika = Column(String(14))
     chat_id = Column(String(14))
     keyword = Column(UnicodeText)
