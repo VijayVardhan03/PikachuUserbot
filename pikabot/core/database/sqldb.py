@@ -60,9 +60,8 @@ class PikaChats(BASE):
 
 class GMute(BASE):
     __tablename__ = "gmute"
-    id = Column(Integer, primary_key=True)
-    pika = Column(String(14))
-    sender = Column(String(14))
+    pika = Column(String(14), primary_key=True)
+    sender = Column(String(14), primary_key=True)
 
     def __init__(self, pika, sender):
         self.pika = str(pika)
@@ -71,9 +70,8 @@ class GMute(BASE):
 
 class GBan(BASE):
     __tablename__ = "gban"
-    id = Column(Integer, primary_key=True)
-    pika = Column(String(14))
-    sender = Column(String(14))
+    pika = Column(String(14), primary_key=True)
+    sender = Column(String(14), primary_key=True)
     reason = Column(UnicodeText)
 
     def __init__(self, pika, sender, reason=""):
@@ -84,10 +82,9 @@ class GBan(BASE):
 
 class Mute(BASE):
     __tablename__ = "mute"
-    id = Column(Integer, primary_key=True)
-    pika = Column(String(14))
-    sender = Column(String(14))
-    chat_id = Column(String(14))
+    pika = Column(String(14), primary_key=True)
+    sender = Column(String(14), primary_key=True)
+    chat_id = Column(String(14), primary_key=True)
     
 
     def __init__(self, pika, sender, chat_id):
@@ -99,10 +96,9 @@ class Mute(BASE):
 
 class Notes(BASE):
     __tablename__ = "notes"
-    id = Column(Integer, primary_key=True)
-    pika = Column(String(14))
-    chat_id = Column(String(14))
-    keyword = Column(UnicodeText)
+    pika = Column(String(14), primary_key=True)
+    chat_id = Column(String(14), primary_key=True)
+    keyword = Column(UnicodeText), primary_key=True)
     reply = Column(UnicodeText)
     f_mesg_id = Column(Numeric)
     
@@ -131,9 +127,8 @@ class PMPermit(BASE):
 
 class Welcome(BASE):
     __tablename__ = "welcome"
-    id = Column(Integer, primary_key=True)
-    pika = Column(String(14))
-    chat_id = Column(String(14))
+    pika = Column(String(14), primary_key=True)
+    chat_id = Column(String(14), primary_key=True)
     cust_wc = Column(UnicodeText)
     cl_wc = Column(Boolean, default=False)
     prev_wc = Column(BigInteger)
@@ -177,9 +172,8 @@ class Filters(BASE):
 
 class Locks(BASE):
     __tablename__ = "locks"
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    pika = Column(String(14))
-    chat_id = Column(String(14))
+    pika = Column(String(14), primary_key=True)
+    chat_id = Column(String(14), primary_key=True)
     # Booleans are for "is this locked", _NOT_ "is this allowed"
     bots = Column(Boolean, default=False)
     commands = Column(Boolean, default=False)
