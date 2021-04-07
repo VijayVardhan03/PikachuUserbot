@@ -98,7 +98,7 @@ class Notes(BASE):
     __tablename__ = "notes"
     pika = Column(String(14), primary_key=True)
     chat_id = Column(String(14), primary_key=True)
-    keyword = Column(UnicodeText), primary_key=True)
+    keyword = Column(UnicodeText, primary_key=True)
     reply = Column(UnicodeText)
     f_mesg_id = Column(Numeric)
     
@@ -108,7 +108,6 @@ class Notes(BASE):
         self.keyword = keyword
         self.reply = reply
         self.f_mesg_id = f_mesg_id
-        self.client_id = client_id
 
 
 class PMPermit(BASE):
