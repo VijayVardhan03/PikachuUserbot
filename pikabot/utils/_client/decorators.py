@@ -62,12 +62,9 @@ def ItzSjDude(**args):
         args["incoming"] = True
         del args["pika"]  
 
-    elif sudo:
+    if sudo:
         args["incoming"] = True
         del args["sudo"]
-
-    elif "incoming" in args and not args["incoming"]:
-        args["outgoing"] = True
 
     if pattern is not None:
         if pika:
