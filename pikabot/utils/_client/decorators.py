@@ -15,54 +15,23 @@ from pathlib import Path
 import re, time, math
 import sys
 
-
-def pika_sudo(from_client=None, **args):
-    if pget("alpha", "cmdhandler"):
-       plug = pget("alpha", "cmdhandler")
-    else: 
-       plug = "."
-    args["func"] = lambda e: e.via_bot_id is None
-    stack = inspect.stack()
-    previous_stack_frame = stack[1]
-    file_test = Path(previous_stack_frame.filename)
-    file_test = file_test.stem.replace(".py", "")
-    pattern = args.get("pattern", None)
-    allow_sudo = True
-    # get the pattern from the decorator
-    if pattern is not None:
-        if pattern.startswith("\#"):
-            # special fix for snip.py
-            args["pattern"] = re.compile(pattern)
-        else:
-            args["pattern"] = re.compile(plug + pattern)
-            cmd = plug + pattern
-            try:
-                CMD_LIST[file_test].append(cmd)
-                Pika_Cmd[file_test].append(cmd)
-            except:
-                CMD_LIST.update({file_test: [cmd]})
-                Pika_Cmd.update({file_test: [cmd]})
-    args["outgoing"] = True
-    # should this command be available for other users?
-    if allow_sudo:
-        if from_client == 1:
-           sudo = list(Var.SUDO_USERS1)
-        if from_client == 2:
-           sudo = list(Var.SUDO_USERS2)
-        if from_client == 3:
-           sudo = list(Var.SUDO_USERS3)
-        if from_client == 4:
-           sudo = list(Var.SUDO_USERS4)
-                 
-        args["from_users"] = sudo
-        args["incoming"] = True
-
-    elif "incoming" in args and not args["incoming"]:
-        args["outgoing"] = True
-        
-    is_message_enabled = True
-
-    return events.NewMessage(**args)
+__st__= "" 
+if pdb.Asudo:
+   Asudo=list(set(int(x) for x in (pdb.Gsudo).split(" "))
+else: 
+   Asudo=__st__
+if pdb.Bsudo: 
+   Bsudo=list(set(int(x) for x in (pdb.Gsudo).split(" "))
+else: 
+   Bsudo=__st__
+if pdb.Gsudo:
+   Gsudo = list(set(int(x) for x in (pdb.Gsudo).split(" "))
+else: 
+   Gsudo=__st__
+if pdb.Dsudo:
+   Dsudo = list(set(int(x) for x in (pdb.Dsudo).split(" "))
+else: 
+   Dsudo=__st__
 
 def ItzSjDude(**args):
     from pikabot import pget
@@ -85,16 +54,12 @@ def ItzSjDude(**args):
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
     pika = args.get("pika", False)
+    sudo = args.get("sudo", False)
     args["outgoing"] = True
 
     if pika:
         args["incoming"] = True
         del args["pika"]
-
-    if allow_sudo:
-        args["from_users"] = list(Var.SUDO_USERS)
-        args["incoming"] = True
-        del args["allow_sudo"]
 
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
@@ -232,31 +197,28 @@ def ItzSjDude(**args):
                     remove("error.log")
 
         if bot:
-            if pika:
-                pass
-            else:
+            if not pika:
                 bot.add_event_handler(wrapper, events.NewMessage(**args))
+            if allow_sudo:
+                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Asudo))
         if bot2:
-            if pika:
-                pass
-            else:
+            if not pika:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args))
+            if allow_sudo:
+                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Bsudo))
         if bot3:
-            if pika:
-                pass
-
-            else:
+            if not pika:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args))
+            if allow_sudo:
+                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Gsudo))
         if bot4:
-            if pika:
-                pass
-            else:
+            if not pika:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args))
+            if allow_sudo:
+                bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Dsudo))
         if tgbot:
             if pika:
                 tgbot.add_event_handler(wrapper, events.NewMessage(**args))
-            else:
-                pass
         try:
             LOAD_PLUG[file_test].append(wrapper)
         except Exception:
