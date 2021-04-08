@@ -578,8 +578,24 @@ class pdb(object):
     Botlog_chat = int(_get("BOTLOG_CHATID"))
     Ytapi = pget("omega", "ytapi")
     Gdtoken = pget("omega", "gdtoken")
-    Asudo = pget("alpha", "sudo")
-    Bsudo = pget("beta", "sudo")
-    Gsudo = pget("gaama", "sudo")
-    Dsudo = pget("delta", "sudo")
-    Osudo = pget("omega", "sudo")
+    if pget("alpha", "sudo"):  
+       Asudo = pget("alpha", "sudo")
+    else: 
+       Asudo = ""
+    if pget("beta", "sudo"):
+       Bsudo = pget("beta", "sudo")
+    else: 
+       Bsudo = ""  
+    if pget("gaama", "sudo"):
+       Gsudo = pget("gaama", "sudo")
+    else: 
+       Gsudo = ""
+    if pget("delta", "sudo"):
+       Dsudo = pget("delta", "sudo")
+    else: 
+       Dsudo= "" 
+    if pget("omega", "sudo"):
+       Osudo = pget("omega", "sudo")
+    else: 
+       Osudo = ""
+
