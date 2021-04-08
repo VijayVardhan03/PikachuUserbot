@@ -362,4 +362,4 @@ class Loader():
         bot.add_event_handler(func, events.NewMessage(**args))
 
 
-__all__=['ItzSjDude', 'pika_sudo', 'admin_cmd', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
+__all__=['ItzSjDude', 'admin_cmd', 'time_formatter', 'get_readable_time', 'humanbytes', 'progress']
