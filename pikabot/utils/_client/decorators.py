@@ -55,15 +55,15 @@ def ItzSjDude(**args):
     trigger_on_inline = args.get('trigger_on_inline', False)
     pika = args.get("pika", False)
     sudo = args.get("sudo", False)
-    args["outgoing"] = True
-    if sudo:
-        args["incoming"] = True
-        del args["sudo"]
-        
-    if pika:
-        args["incoming"] = True
-        del args["pika"]
-
+    lol=True
+   
+    if lol:
+        if pika: 
+            args["incoming"] = True
+            del args["pika"]
+        if sudo:
+            args["incoming"] = True
+            del args["sudo"]  
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
 
