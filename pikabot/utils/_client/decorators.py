@@ -65,7 +65,7 @@ def ItzSjDude(**args):
         args["incoming"] = True
         del args["sudo"]
     else: 
-       arts["outgoing"] = True
+       args["outgoing"] = True
 
     if pattern is not None:
         if pika:
