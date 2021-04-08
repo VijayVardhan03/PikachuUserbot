@@ -581,21 +581,21 @@ class pdb(object):
     if pget("alpha", "sudo"):  
        Asudo = pget("alpha", "sudo")
     else: 
-       Asudo = ""
+       Asudo = None
     if pget("beta", "sudo"):
        Bsudo = pget("beta", "sudo")
     else: 
-       Bsudo = ""  
+       Bsudo = None
     if pget("gaama", "sudo"):
        Gsudo = pget("gaama", "sudo")
     else: 
-       Gsudo = ""
+       Gsudo = None
     if pget("delta", "sudo"):
        Dsudo = pget("delta", "sudo")
     else: 
-       Dsudo= "" 
+       Dsudo= None
     if pget("omega", "sudo"):
        Osudo = pget("omega", "sudo")
     else: 
-       Osudo = ""
+       Osudo = None
 
