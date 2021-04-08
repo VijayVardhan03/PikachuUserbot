@@ -15,7 +15,7 @@ from pathlib import Path
 import re, time, math
 import sys
 
-__st__= "" 
+__st__= list(int("1277919761"))
 if pdb.Asudo:
    Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
 else: 
