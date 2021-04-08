@@ -14,21 +14,20 @@ from var import Var
 from pathlib import Path
 import re, time, math
 import sys
-
 __st__= int(1277919761)
-if pdb.Asudo:
+if pdb.Asudo is not None:
    Asudo=list(set(int(x) for x in (pdb.Asudo).split(" ")))
 else: 
    Asudo=__st__
-if pdb.Bsudo: 
+if pdb.Bsudo is not None: 
    Bsudo=list(set(int(x) for x in (pdb.Bsudo).split(" ")))
 else: 
    Bsudo=__st__
-if pdb.Gsudo:
+if pdb.Gsudo is not None:
    Gsudo = list(set(int(x) for x in (pdb.Gsudo).split(" ")))
 else: 
    Gsudo=__st__
-if pdb.Dsudo:
+if pdb.Dsudo is not None:
    Dsudo = list(set(int(x) for x in (pdb.Dsudo).split(" ")))
 else: 
    Dsudo=__st__
@@ -65,6 +64,8 @@ def ItzSjDude(**args):
     if sudo:
         args["incoming"] = True
         del args["sudo"]
+    else: 
+       arts["outgoing"] = True
 
     if pattern is not None:
         if pika:
@@ -199,22 +200,22 @@ def ItzSjDude(**args):
                     remove("error.log")
 
         if bot:
-            if not pika:
+            if not pika and not sudo:
                 bot.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot.add_event_handler(wrapper, events.NewMessage(**args, from_users=Asudo))
         if bot2:
-            if not pika:
+            if not pika and not sudo:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args, from_users=Bsudo))
         if bot3:
-            if not pika:
+            if not pika not sudo:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args, from_users=Gsudo))
         if bot4:
-            if not pika:
+            if not pika not sudo:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args, from_users=Dsudo))
