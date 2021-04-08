@@ -62,10 +62,9 @@ def ItzSjDude(**args):
         del args["pika"]  
 
     if sudo:
-        args["incoming"] = True
         del args["sudo"]
     else: 
-       args["outgoing"] = True
+        args["outgoing"] = True
 
     if pattern is not None:
         if pika:
@@ -203,12 +202,12 @@ def ItzSjDude(**args):
             if not pika and not sudo:
                 bot.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
-                bot.add_event_handler(wrapper, events.NewMessage(**args, from_users=Asudo))
+                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Asudo))
         if bot2:
             if not pika and not sudo:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args, from_users=Bsudo))
+                bot2.add_event_handler(wrapper, events.NewMessage(**args,from_users=Bsudo,))
         if bot3:
             if not pika and not sudo:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args))
