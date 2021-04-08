@@ -207,17 +207,17 @@ def ItzSjDude(**args):
             if not pika and not sudo:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args,from_users=Bsudo,))
+                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Bsudo,))
         if bot3:
             if not pika and not sudo:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
-                bot3.add_event_handler(wrapper, events.NewMessage(**args, from_users=Gsudo))
+                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Gsudo))
         if bot4:
             if not pika and not sudo:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
-                bot4.add_event_handler(wrapper, events.NewMessage(**args, from_users=Dsudo))
+                bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Dsudo))
         if tgbot:
             if pika:
                 tgbot.add_event_handler(wrapper, events.NewMessage(**args))
