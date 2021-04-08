@@ -17,19 +17,19 @@ import sys
 
 __st__= "" 
 if pdb.Asudo:
-   Asudo=list(set(int(x) for x in (pdb.Gsudo).split(" "))
+   Asudo=list(set(int(x) for x in (pdb.Gsudo).split(" ")))
 else: 
    Asudo=__st__
 if pdb.Bsudo: 
-   Bsudo=list(set(int(x) for x in (pdb.Gsudo).split(" "))
+   Bsudo=list(set(int(x) for x in (pdb.Gsudo).split(" ")))
 else: 
    Bsudo=__st__
 if pdb.Gsudo:
-   Gsudo = list(set(int(x) for x in (pdb.Gsudo).split(" "))
+   Gsudo = list(set(int(x) for x in (pdb.Gsudo).split(" ")))
 else: 
    Gsudo=__st__
 if pdb.Dsudo:
-   Dsudo = list(set(int(x) for x in (pdb.Dsudo).split(" "))
+   Dsudo = list(set(int(x) for x in (pdb.Dsudo).split(" ")))
 else: 
    Dsudo=__st__
 
