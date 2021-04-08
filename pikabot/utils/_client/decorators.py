@@ -57,13 +57,14 @@ def ItzSjDude(**args):
     sudo = args.get("sudo", False)
     lol=True
    
-    if lol:
-        if pika: 
-            args["incoming"] = True
-            del args["pika"]
-        if sudo:
-            args["incoming"] = True
-            del args["sudo"]  
+   
+    if pika: 
+        args["incoming"] = True
+        del args["pika"]  
+
+    elif sudo:
+        args["incoming"] = True
+        del args["sudo"]
 
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
@@ -201,22 +202,22 @@ def ItzSjDude(**args):
                     remove("error.log")
 
         if bot:
-            if not pika and sudo:
+            if not pika:
                 bot.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot.add_event_handler(wrapper, events.NewMessage(**args, from_users=Asudo))
         if bot2:
-            if not pika and sudo:
+            if not pika:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot2.add_event_handler(wrapper, events.NewMessage(**args, from_users=Bsudo))
         if bot3:
-            if not pika and sudo:
+            if not pika:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot3.add_event_handler(wrapper, events.NewMessage(**args, from_users=Gsudo))
         if bot4:
-            if not pika and sudo:
+            if not pika:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args))
             if sudo:
                 bot4.add_event_handler(wrapper, events.NewMessage(**args, from_users=Dsudo))
