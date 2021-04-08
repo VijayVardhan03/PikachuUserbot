@@ -56,7 +56,8 @@ def ItzSjDude(**args):
     pika = args.get("pika", False)
     sudo = args.get("sudo", False)
     args["outgoing"] = True
-
+    if sudo:
+        del args["sudo"]
     if pika:
         args["incoming"] = True
         del args["pika"]
