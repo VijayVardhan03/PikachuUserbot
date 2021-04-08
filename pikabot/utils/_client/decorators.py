@@ -64,6 +64,7 @@ def ItzSjDude(**args):
         if sudo:
             args["incoming"] = True
             del args["sudo"]  
+
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
 
