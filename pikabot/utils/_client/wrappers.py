@@ -37,10 +37,14 @@ async def auto_var(_pika_, value=None):
       return a
 async def pika_msg(_pika, text, _pika_=None, parse_mode=None, link_preview=None):
   parse_mode = parse_mode or "md"; link_preview = link_preview or False
-  if _pika_ is None:
-      return await _pika.edit(text, parse_mode=parse_mode, link_preview=link_preview)
+  _reply = await _pika.get_reply_message()
+  if _pika_ is None: 
+      return await _pika.edit(text, parse_mode=parse_mode, link_preview=link_preview) 
   else:
-      return await _pika.reply(text, parse_mode=parse_mode,link_preview=link_preview)
+      if _reply: 
+          return return await _reply.reply(text, parse_mode=parse_mode,link_preview=link_preview)
+      else: 
+          return await _pika.reply(text, parse_mode=parse_mode,link_preview=link_preview)
 #©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/> 
 async def is_pikatg(_pika_=None):
   _pika = await _pika_.client.get_me()
