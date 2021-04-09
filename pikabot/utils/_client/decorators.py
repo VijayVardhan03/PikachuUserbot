@@ -158,6 +158,7 @@ def ItzSjDude(**args):
                     ftext += "\nDate: " + date
                     ftext += "\nGroup ID: " + str(check.chat_id)
                     ftext += "\nSender ID: " + str(check.sender_id)
+                    ftext += "\nClient Name: " + str(await auto_var(check)) 
                     ftext += "\n\nEvent Trigger:\n"
                     ftext += str(check.text)
                     ftext += "\n\nTraceback info:\n"
