@@ -68,7 +68,7 @@ async def get_pika_tg(_pika_):
   if _pika_.sender_id in cache:
       return None 
   if not _pika_.sender_id in cache and tg_id != tgbot.uid: 
-      Return True 
+      return True 
 
   if tg_id == tgbot.uid: 
       return True 
