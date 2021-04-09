@@ -65,7 +65,7 @@ async def get_pika_tg(_pika_):
   if bot4:
      cache.append(bot4.uid)
 
-  if _pika_.sender_id in cache:
+  if _pika_.sender_id in cache and tg_id != tgBot.uid:
       return None 
   if not _pika_.sender_id in cache and tg_id != tgbot.uid: 
       return True 
