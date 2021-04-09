@@ -55,14 +55,21 @@ async def get_pika_id(_pika):
 #©ItzSjDude </Kang/Copy with Credits else u will be called ultra gey/>
 async def get_pika_tg(_pika_): 
   tg_id = await get_pika_id(_pika_)
-  if not tg_id == 779890498: 
-      if Var.SUDO_USERS1 or Var.SUDO_USERS2 or Var.SUDO_USERS3 or Var.SUDO_USERS4: 
-          if _pika_.sender_id in Var.SUDO_USERS1 or _pika_.sender_id in Var.SUDO_USERS2 or _pika_.sender_id in Var.SUDO_USERS3 or _pika_.sender_id in Var.SUDO_USERS4:
-              return True
+  cache=[]
+  if bot:
+     cache.append(bot.uid)
+  if bot2:
+     cache.append(bot2.uid)
+  if bot3:
+     cache.append(bot3.uid)
+  if bot4:
+     cache.append(bot4.uid)
 
-  if tg_id == bot.uid: 
-      return None
-    
+  if _pika_.sender_id in cache:
+      return None 
+  if not _pika_.sender_id in cache and tg_id !== tgbot.uid: 
+      Return True 
+
   if tg_id == tgbot.uid: 
       return True 
 
