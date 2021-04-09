@@ -140,6 +140,7 @@ def ItzSjDude(**args):
             except BaseException as e:
                 pikalog.exception(e)
                 if not disable_errors:
+                    from .wrappers import auto_var
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**Sorry, I encountered a error!**\n"
