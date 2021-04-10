@@ -92,6 +92,7 @@ def ItzSjDude(**args):
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     trigger_on_inline = args.get('trigger_on_inline', False)
+    disable_errors = args.get("disable_errors", False)
     pika = args.get("pika", False)
     sudo = args.get("sudo", False)
     lol=True
@@ -166,6 +167,8 @@ def ItzSjDude(**args):
         del args['trigger_on_inline']
     if "groups_only" in args:
         del args['groups_only']
+    if "disable_errors" in args:
+        del args['disable_errors']
     if "trigger_on_fwd" in args:
         del args['trigger_on_fwd']
     # check if the plugin should listen for outgoing 'messages'
@@ -191,7 +194,6 @@ def ItzSjDude(**args):
                 pass
             except BaseException as e:
                 pikalog.exception(e)
-                disable_errors=False
                 if not disable_errors:
                     from .wrappers import auto_var
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
