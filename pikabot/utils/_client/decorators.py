@@ -46,7 +46,7 @@ if cmd1:
 else: 
    acmd = defcmd
 if cmd2:
-   bcmd = "f"\{cmd2}"
+   bcmd = f"\{cmd2}"
 else: 
    bcmd = defcmd
 if cmd3:
