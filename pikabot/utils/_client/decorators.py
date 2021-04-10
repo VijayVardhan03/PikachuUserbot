@@ -42,47 +42,43 @@ scmd3 = pget("gaama", "sudocmd")
 scmd4 = pget("delta", "sudocmd")
 
 if cmd1:
-   acmd = "\" + cmd1
+   acmd = f"\{cmd1}"
 else: 
    acmd = defcmd
 if cmd2:
-   bcmd = "\" + cmd2
+   bcmd = "f"\{cmd2}"
 else: 
    bcmd = defcmd
 if cmd3:
-   gcmd = "\" + cmd3
+   gcmd = f"\{cmd3}"
 else: 
    gcmd = defcmd
 if cmd4:
-   dcmd = "\" + cmd4
+   dcmd = f"\{cmd4}"
 else: 
    cmd = defcmd
  
 defscmd = "\!" 
 
 if scmd1: 
-   sacmd = "\" + scmd1
+   sacmd = f"\{scmd1}"
 else: 
    sacmd = defscmd
 if scmd2:
-   sbcmd = "\" + scmd2
+   sbcmd = f"\{cmd2}"
 else: 
    sbcmd = defscmd
 if scmd3:
-   sgcmd = "\" + scmd3
+   sgcmd = f"\{scmd3}"
 else:
    sgcmd = defscmd
 if scmd4:
-   sdcmd = "\" + scmd4
+   sdcmd = f"\{scmd4}"
 else:
    sdcmd = defscmd 
 
 def ItzSjDude(**args):
     from pikabot import pget
-    if pget("alpha", "cmdhandler"):
-       plug = "\" + pget("alpha", "cmdhandler")
-    else: 
-       plug = "\."
     _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
