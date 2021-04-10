@@ -31,11 +31,56 @@ if pdb.Dsudo is not None:
    Dsudo = list(set(int(x) for x in (pdb.Dsudo).split(" ")))
 else: 
    Dsudo=__st__
+defcmd= "\."
+cmd1=pget("alpha", "cmdhandler")
+cmd2=pget("beta", "cmdhandler")
+cmd3=pget("gaama", "cmdhandler")
+cmd4=pget("delta", "cmdhandler")
+scmd1 = pget("alpha", "sudocmd")
+scmd2 = pget("beta", "sudocmd")
+scmd3 = pget("gaama", "sudocmd")
+scmd4 = pget("delta", "sudocmd")
+
+if cmd1:
+   acmd = "\" + cmd1
+else: 
+   acmd = defcmd
+if cmd2:
+   bcmd = "\" + cmd2
+else: 
+   bcmd = defcmd
+if cmd3:
+   gcmd = "\" + cmd3
+else: 
+   gcmd = defcmd
+if cmd4:
+   dcmd = "\" + cmd4
+else: 
+   cmd = defcmd
+ 
+defscmd = "\!" 
+
+if scmd1: 
+   sacmd = "\" + scmd1
+else: 
+   sacmd = defscmd
+if scmd2:
+   sbcmd = "\" + scmd2
+else: 
+   sbcmd = defscmd
+if scmd3:
+   sgcmd = "\" + scmd3
+else:
+   sgcmd = defscmd
+if scmd4:
+   sdcmd = "\" + scmd4
+else:
+   sdcmd = defscmd 
 
 def ItzSjDude(**args):
     from pikabot import pget
     if pget("alpha", "cmdhandler"):
-       plug = pget("alpha", "cmdhandler")
+       plug = "\" + pget("alpha", "cmdhandler")
     else: 
        plug = "\."
     _plug = "\!"
@@ -47,7 +92,6 @@ def ItzSjDude(**args):
     pattern = args.get("pattern", None)
     args.get('disable_edited', True)
     allow_sudo = args.get("allow_sudo", False)
-    disable_errors = args.get("disable_errors", False)
     args.get('disable_edited', True)
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
@@ -84,36 +128,48 @@ def ItzSjDude(**args):
             except BaseException:
                 PikaAsst.update({file_test: [pikatg]})
 
-        else:
+        else: 
+            dpt=gpt=bpt=apt= None 
+            dspt=gspt=bspt=aspt= None 
             if pattern.startswith("\\#"):
-                args["pattern"] = re.compile(pattern)
+                del args["pattern"]
+                dpt=gpt=bpt=apt=re.compile(pattern) 
             if pattern.startswith("^."):
+                del args["pattern"]
                 pikacmd = pattern.replace("^.", "")
-                args["pattern"] = re.compile(plug + pikacmd)
-                cmd = plug + pikacmd
-                try:
-                    Pika_Cmd[file_test].append(cmd)
-                except BaseException:
-                    Pika_Cmd.update({file_test: [cmd]})
+                if bot: 
+                    apt = re.compile(acmd + pikacmd)
+                    aspt = re.compile(sacmd + pikacmd)
+                if bot2:
+                    bpt = re.compile(bcmd + pikacmd) 
+                    bspt = re.compile(sbcmd + pikacmd)
+                if bot3:
+                    gpt = re.compile(gcmd + pikacmd) 
+                    gspt = re.compile(sgcmd + pikacmd)
+                if bot4:
+                    dpt = re.compile(dcmd + pikacmd) 
+                    dspt = re.compile(sdcmd + pikacmd) 
             else:
-                args["pattern"] = re.compile(plug + pattern)
-                cmd = plug + pattern
-                try:
-                    Pika_Cmd[file_test].append(cmd)
-                except BaseException:
-                    Pika_Cmd.update({file_test: [cmd]})
-
-    if "allow_edited_updates" in args and args["allow_edited_updates"]:
-        args["allow_edited_updates"]
-        del args["allow_edited_updates"]
+                del args["pattern"]
+                if bot: 
+                    apt = re.compile(acmd + pattern)
+                    aspt = re.compile(sacmd + pattern)
+                if bot2:
+                    bpt = re.compile(bcmd + pattern) 
+                    bspt = re.compile(sbcmd + pattern)
+                if bot3:
+                    gpt = re.compile(gcmd + pattern) 
+                    gspt = re.compile(sgcmd + pattern)
+                if bot4:
+                    dpt = re.compile(dcmd + pattern) 
+                    dspt = re.compile(sdcmd + pattern) 
+         
+     
+ 
     if "trigger_on_inline" in args:
         del args['trigger_on_inline']
-    if "disable_edited" in args:
-        del args['disable_edited']
     if "groups_only" in args:
         del args['groups_only']
-    if "disable_errors" in args:
-        del args['disable_errors']
     if "trigger_on_fwd" in args:
         del args['trigger_on_fwd']
     # check if the plugin should listen for outgoing 'messages'
@@ -202,24 +258,24 @@ def ItzSjDude(**args):
 
         if bot:
             if not pika and not sudo:
-                bot.add_event_handler(wrapper, events.NewMessage(**args))
+                bot.add_event_handler(wrapper, events.NewMessage(**args, pattern=apt))
             if sudo:
-                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Asudo))
+                bot.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=aspt, from_users=Asudo))
         if bot2:
             if not pika and not sudo:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args))
+                bot2.add_event_handler(wrapper, events.NewMessage(**args, pattern=bpt))
             if sudo:
-                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Bsudo,))
+                bot2.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=bspt, from_users=Bsudo,))
         if bot3:
             if not pika and not sudo:
-                bot3.add_event_handler(wrapper, events.NewMessage(**args))
+                bot3.add_event_handler(wrapper, events.NewMessage(**args, pattern=gpt))
             if sudo:
-                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Gsudo))
+                bot3.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=gspt, from_users=Gsudo))
         if bot4:
             if not pika and not sudo:
-                bot4.add_event_handler(wrapper, events.NewMessage(**args))
+                bot4.add_event_handler(wrapper, events.NewMessage(**args, pattern=dpt))
             if sudo:
-                bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, from_users=Dsudo))
+                bot4.add_event_handler(wrapper, events.NewMessage(**args, incoming=True, pattern=dspt, from_users=Dsudo))
         if tgbot:
             if pika:
                 tgbot.add_event_handler(wrapper, events.NewMessage(**args))
