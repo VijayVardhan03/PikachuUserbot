@@ -16,7 +16,7 @@ from ..logit import *
 from sys import *
 import asyncio, os
 from telethon import *
-from pathlib import path
+from pathlib import Path
 from logging import getlogger
 from telethon.tl.types import *
 import telethon.utils as tutils
@@ -108,16 +108,15 @@ async def pikabot():
 
             def __load_plugs__():
                 from .loader import pika_plugins, pika_assistant
-                from pathlib import path
                 for name in files:
                     with open(name) as f:
-                        path1 = path(f.name)
+                        path1 = Path(f.name)
                         shortname = path1.stem
                         pika_plugins(shortname.replace(".py", ""))
 
                 for name in _files:
                     with open(name) as f:
-                        _asstpath = path(f.name)
+                        _asstpath = Path(f.name)
                         shortname = _asstpath.stem
                         pika_assistant(shortname.replace(".py", ""))
             __load_plugs__()
