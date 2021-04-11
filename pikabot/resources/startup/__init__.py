@@ -107,7 +107,7 @@ async def pikabot():
                     await pika_login("delta")
 
             def __load_plugs__():
-                from .loader import pika_plugins, pika_assistant
+                from ...loader import pika_plugins, pika_assistant
                 for name in files:
                     with open(name) as f:
                         path1 = Path(f.name)
