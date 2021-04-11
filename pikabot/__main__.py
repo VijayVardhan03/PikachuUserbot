@@ -10,6 +10,7 @@
 # All rights reserved
 
 from . import pikabot
+import asyncio 
 
 if __name__ == "__main__":  
     pikaloop = asyncio.get_event_loop()
