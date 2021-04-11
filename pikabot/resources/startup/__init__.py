@@ -26,7 +26,7 @@ pikalog = getLogger(__name__)
 
 async def pikabot(): 
     from ...core.database import pdb
-    if bot is None:
+    if not bot :
         pikalog.info(
            "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.Bf_uname))
         await pika_login("alpha")
