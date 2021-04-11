@@ -10,9 +10,9 @@
 # all rights reserved
 
 from ...utils import pika_msg
-from .login import pika_login
+from ..login import pika_login
 from ...clients import bot, bot2, bot3, bot4, tgbot
-from .logit import *
+from ..logit import *
 from sys import *
 import asyncio, os
 from telethon import *
