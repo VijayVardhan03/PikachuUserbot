@@ -9,8 +9,8 @@
 #
 # all rights reserved
 
-from ..utils import pika_msg, pika_login
-from ..clients import bot, bot2, bot3, bot4, tgbot
+from ...utils import pika_msg, pika_login
+from ...clients import bot, bot2, bot3, bot4, tgbot
 from .logit import *
 from sys import *
 import asyncio, os
@@ -24,7 +24,7 @@ import time
 pikalog = getlogger(__name__)
 
 async def pikabot(): 
-    from .core.database import pdb
+    from ...core.database import pdb
     if bot is none:
         pikalog.info(
            "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.bf_uname))
