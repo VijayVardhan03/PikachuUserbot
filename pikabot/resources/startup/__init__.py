@@ -26,7 +26,7 @@ pikalog = getLogger(__name__)
 
 async def pikabot(): 
     from ...core.database import pdb
-    if not bot :
+    if not bot:
         pikalog.info(
            "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.Bf_uname))
         await pika_login("alpha")
@@ -35,7 +35,7 @@ async def pikabot():
         _start = True
         _logstr_ = "__{}__: connected 🔥"
         _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(
-            _const, Pdb.bf_uname)
+            _const, pdb.Bf_uname)
         import glob
         path = './plugins/*.py'
         _path = './pikabot/assistant/plugins/*.py'
