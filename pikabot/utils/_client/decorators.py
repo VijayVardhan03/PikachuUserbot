@@ -81,8 +81,8 @@ def ItzSjDude(**args):
     from pikabot import pget
     _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
-    stack = inspect.stack()
-    previous_stack_frame = stack[1]
+    stk = inspect.stack()
+    previous_stack_frame = stk[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
     pattern = args.get("pattern", None)
