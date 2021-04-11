@@ -17,7 +17,7 @@ from sys import *
 import asyncio, os
 from telethon import *
 from pathlib import Path
-from logging import getlogger
+from logging import getLogger
 from telethon.tl.types import *
 import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
