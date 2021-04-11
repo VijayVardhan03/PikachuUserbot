@@ -28,14 +28,14 @@ async def pikabot():
     from ...core.database import pdb
     if bot is None:
         pikalog.info(
-           "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.bf_uname))
+           "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.Bf_uname))
         await pika_login("alpha")
     else:
         _const = {}
         _start = True
         _logstr_ = "__{}__: connected 🔥"
         _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(
-            _const, pdb.bf_uname)
+            _const, Pdb.bf_uname)
         import glob
         path = './plugins/*.py'
         _path = './pikabot/assistant/plugins/*.py'
@@ -49,8 +49,8 @@ async def pikabot():
             tgbot.uid = tutils.get_peer_id(tgbot.me)
             pikalog.info(_logstr_.format("tgbot"))
             msg = _logstr_.format("_tgbot_") + '\n\n'
-            _logpika = await tgbot.send_message(pdb.botlog_chat, msg)
-            if pdb.alpha:
+            _logpika = await tgbot.send_message(pdb.Botlog_chat, msg)
+            if pdb.Alpha:
                 try:
                     await bot.start()
                     bot.me = await bot.get_me()
@@ -66,7 +66,7 @@ async def pikabot():
                     await pika_msg(_logpika, msg)
                     await pika_login("alpha")
 
-            if pdb.beta:
+            if pdb.Beta:
                 try:
                     await bot2.start()
                     pikalog.info(_logstr_.format("multiclient1"))
@@ -79,7 +79,7 @@ async def pikabot():
                     msg += _logstr2_.format("multiclient1") + "\n\n"
                     await pika_msg(_logpika, msg)
                     await pika_login("beta")
-            if pdb.gaama:
+            if pdb.Gaama:
                 try:
                     await bot3.start()
                     pikalog.info(_logstr2_.format("multiclient2"))
@@ -92,7 +92,7 @@ async def pikabot():
                     msg += _logstr2_.format("multiclient2") + "\n\n"
                     await pika_msg(_logpika, msg)
                     await pika_login("gaama")
-            if pdb.delta:
+            if pdb.Delta:
                 try:
                     await bot4.start()
                     pikalog.info(_logstr_.format("multiclient3"))
