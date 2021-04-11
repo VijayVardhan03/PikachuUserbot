@@ -8,7 +8,7 @@ from time import gmtime, strftime
 from asyncio import create_subprocess_shell as asyncsubshell, subprocess as asyncsub
 from os import remove
 from traceback import format_exc
-from ....core import * 
+from ...core import * 
 from sys import *
 from var import Var
 from pathlib import Path
