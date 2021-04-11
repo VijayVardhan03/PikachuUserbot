@@ -32,7 +32,7 @@ async def pikabot():
         await pika_login("alpha")
     else:
         _const = {}
-        _start = true
+        _start = True
         _logstr_ = "__{}__: connected 🔥"
         _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(
             _const, pdb.bf_uname)
