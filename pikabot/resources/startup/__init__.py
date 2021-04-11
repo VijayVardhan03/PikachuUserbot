@@ -22,8 +22,7 @@ from telethon.tl.types import *
 import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
 import time
-pikalog = getLogger(__name__)
-
+pikalog = getLogger("Startup")
 async def pikabot(): 
     from ...core.database import pdb
     if not bot:
