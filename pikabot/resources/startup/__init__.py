@@ -9,7 +9,7 @@
 #
 # all rights reserved
 
-from pikabot import pika_msg, pika_login, rawtm
+from ..utils import pika_msg, pika_login
 from ..clients import bot, bot2, bot3, bot4, tgbot
 from .logit import *
 from sys import *
