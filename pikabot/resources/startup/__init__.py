@@ -30,18 +30,9 @@ async def pikabot():
            "**mainclient**: started login assistent, do /start at {}'s pm".format(pdb.Bf_uname))
         await pika_login("alpha")
     else:
-        _const = {}
-        _start = True
-        _logstr_ = "__{}__: connected 🔥"
-        _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(
-            _const, pdb.Bf_uname)
-        import glob
-        path = './plugins/*.py'
-        _path = './pikabot/Assistant/plugins/*.py'
-        files = glob.glob(path)
-        _files = glob.glob(_path)
-
+        _const = {}; _logstr_ = "__{}__: connected 🔥"; _logstr2_ = "__{}__: started login assistent, do /start at {}'s pm".format(_const, pdb.Bf_uname); import glob; path = './plugins/*.py'; _path = './pikabot/Assistant/plugins/*.py'; files = glob.glob(path); _files = glob.glob(_path)
         await tgbot.start(); tgbot.me = await tgbot.get_me(); tgbot.PikaAsst = {}; tgbot.uid = tutils.get_peer_id(tgbot.me); pikalog.info(_logstr_.format("tgbot")); msg = _logstr_.format("_tgbot_") + '\n\n'; _logpika = await tgbot.send_message(pdb.Botlog_chat, msg)
+
         if pdb.Alpha:
             try:
                 await bot.start(); bot.me = await bot.get_me(); bot.pika_cmd = {}; bot.uid = tutils.get_peer_id(bot.me); pikalog.info(_logstr_.format("mainclient")); msg += _logstr_.format("mainclient") + "\n\n"; await pika_msg(_logpika, msg)
@@ -53,11 +44,13 @@ async def pikabot():
                 await bot2.start(); pikalog.info(_logstr_.format("multiclient1")); bot2.me = await bot2.get_me(); bot2.uid = tutils.get_peer_id(bot2.me); msg += _logstr_.format("multiclient1") + "\n\n"; await pika_msg(_logpika, msg)
             except baseexception:
                 pikalog.info(_logstr2_.format("multiclient1")); msg += _logstr2_.format("multiclient1") + "\n\n"; await pika_msg(_logpika, msg); await pika_login("beta")
+
         if pdb.Gaama:
             try:
                 await bot3.start(); pikalog.info(_logstr2_.format("multiclient2")); bot3.me = await bot3.get_me(); bot3.uid = tutils.get_peer_id(bot3.me); msg += _logstr_.format("multiclient2") + "\n\n"; await pika_msg(_logpika, msg)
             except baseexception:
                 pikalog.info(_logstr2_.format("multiclient2")); msg += _logstr2_.format("multiclient2") + "\n\n"; await pika_msg(_logpika, msg); await pika_login("gaama")
+
         if pdb.Delta:
             try:
                 await bot4.start(); pikalog.info(_logstr_.format("multiclient3")); bot4.me = await bot4.get_me(); bot4.uid = tutils.get_peer_id(bot4.me); msg += logstr_.format("multiclient3") + "\n\n"; await pika_msg(_logpika, msg)
