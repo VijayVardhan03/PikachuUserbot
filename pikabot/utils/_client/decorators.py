@@ -1,5 +1,4 @@
 import re
-import inspect
 import sys
 from telethon import *
 from pathlib import Path
@@ -78,10 +77,11 @@ else:
    sdcmd = defscmd 
 
 def ItzSjDude(**args):
+    from inspect import stack
     from pikabot import pget
     _plug = "\!"
     args["func"] = lambda e: e.via_bot_id is None
-    stk = inspect.stack()
+    stk = stack()
     previous_stack_frame = stk[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
