@@ -119,8 +119,11 @@ async def pikabot():
                             shortname = _asstpath.stem
                             pika_assistant(shortname.replace(".py", ""))
 
-
-            __load_plugs__()
+            try: 
+                __load_plugs__()
+            except Exception as e
+                msg += str(e)
+                await pika_msg(_logpika, msg)
 
             msg += "sucessfully loaded plugins\n\n"
             await pika_msg(_logpika, msg)
