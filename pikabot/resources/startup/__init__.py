@@ -121,7 +121,7 @@ async def pikabot():
 
             try: 
                 __load_plugs__()
-            except Exception as e
+            except Exception as e:
                 msg += str(e)
                 await pika_msg(_logpika, msg)
 
