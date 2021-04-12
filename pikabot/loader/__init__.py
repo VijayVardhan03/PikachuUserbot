@@ -15,16 +15,14 @@ logpl = getLogger("Plugins:")
 logpa = getLogger("Assistant:")
 
 def pika_assistant(_pikasst=None):
-    if pdb.Asstt:
-        rx = "!"
-        import plugins.__init__ as _Modules
-        asst = module_from_spec(spec_from_file_location("pikabot.Assistant.plugins.{}".format(_pikasst), _asstpath(f"./pikabot/Assistant/plugins/{_pikasst}.py")))
-                               #____Pikabot__Assistant__Plugins__Loader____
-        userbot = pikabot; asst.bot = bot; asst.tgbot = tgbot; asst.Var = Var; asst.rx = rx; asst.ItzSjDude = ItzSjDude; asst.pikatgbot = pikatgbot; modules['Asst_modules'] = _Modules       
-        PikaAsst[_pikasst] = asst; modules["pikabot"+_pikasst] = asst; tgbot.PikaAsst[_pikasst] = asst; spec.loader.exec_module(asst); logpa.info("🔥Imported "+_pikasst)
+    rx = "!"
+    import plugins.__init__ as _Modules
+    asst = module_from_spec(spec_from_file_location("pikabot.Assistant.plugins.{}".format(_pikasst), _asstpath(f"./pikabot/Assistant/plugins/{_pikasst}.py")))
+                          #____Pikabot__Assistant__Plugins__Loader____
+    userbot = pikabot; asst.bot = bot; asst.tgbot = tgbot; asst.Var = Var; asst.rx = rx; asst.ItzSjDude = ItzSjDude; asst.pikatgbot = pikatgbot; modules['Asst_modules'] = _Modules       
+    PikaAsst[_pikasst] = asst; modules["pikabot"+_pikasst] = asst; tgbot.PikaAsst[_pikasst] = asst; spec.loader.exec_module(asst); logpa.info("🔥Imported "+_pikasst)
        
-    else: 
-       return 
+    
 
 def pika_plugins(_pikamod=None):
     from pathlib import Path 
