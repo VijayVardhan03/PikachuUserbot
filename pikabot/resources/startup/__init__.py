@@ -37,7 +37,7 @@ async def pikabot():
             _const, pdb.Bf_uname)
         import glob
         path = './plugins/*.py'
-        _path = './pikabot/assistant/plugins/*.py'
+        _path = './pikabot/Assistant/plugins/*.py'
         files = glob.glob(path)
         _files = glob.glob(_path)
 
@@ -113,6 +113,7 @@ async def pikabot():
                             path1 = Path(f.name)
                             shortname = path1.stem
                             pika_plugins(shortname.replace(".py", ""))
+                if pdb.Asstt: 
                     for name in _files:
                         with open(name) as f:
                             _asstpath = Path(f.name)
