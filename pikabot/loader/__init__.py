@@ -7,7 +7,7 @@ from var import Var
 from sys import modules
 import pikabot
 from pikabot import bot, tgbot, pikatgbot, ItzSjDude
-from pikabot.core import pget
+from pikabot.core import pdb, pget
 import pikabot.utils as _utilz
 from pathlib import Path as _asstpath
 from logging import getLogger
@@ -15,7 +15,7 @@ logpl = getLogger("Plugins:")
 logpa = getLogger("Assistant:")
 
 def pika_assistant(_pikasst=None):
-    if ACTIVATE_ASSISTANT:
+    if pdb.Asstt:
        rx = "!"
        import plugins.__init__ as _Modules
        asstpath = _asstpath(f"./pikabot/Assistant/plugins/{_pikasst}.py")
