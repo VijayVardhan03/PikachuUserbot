@@ -23,14 +23,12 @@ export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Kolkata
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-apt-get update -y && apt-get install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt install python3.9
+apt-get update -y && apt-get install software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y && apt install python3.9
 apt-get install -y --no-install-recommends \
     coreutils \
     gifsicle \
     apt-utils \
-    python3.9 \
-    python3.9-pip \
-    python3.9-setuptools \
+    python3-pip \
     bash \
     bzip2 \
     imagemagick \
