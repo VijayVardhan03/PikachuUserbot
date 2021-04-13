@@ -21,6 +21,11 @@ echo '
 '
 export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Kolkata
+export PYTHON_VERSION=3.10.0a7
+export PYTHON_PIP_VERSION=21.0.1
+export PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/29f37dbe6b3842ccd52d61816a3044173962ebeb/public/get-pip.py
+export PYTHON_GET_PIP_SHA256=e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de
+
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 apt-get update -y && apt-get install software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y && apt install python3.9
