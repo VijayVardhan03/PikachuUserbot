@@ -71,6 +71,7 @@ async def pikabot():
         try: 
             __load_plugs__()
         except Exception as e:
+            pikalog.exception(e)
             msg += str(e) + "\n\n"; await pika_msg(_logpika, msg)
 
         msg += "sucessfully loaded plugins\n\n" + "**pikabot started sucessfully**"; await pika_msg(_logpika, msg)
