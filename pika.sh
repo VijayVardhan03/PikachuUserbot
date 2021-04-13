@@ -109,6 +109,10 @@ apt -qq install -y --no-install-recommends \
     bzip2 \
     curl \
     git \
+    libc6 \
+    libgcc-s1 \
+    libicu66 \
+    libllvm9 \
     libreadline-dev \
     postgresql-13 \
     postgresql-contrib-13 \
