@@ -28,6 +28,8 @@ apt-get update -y && apt-get install software-properties-common && add-apt-repos
     gifsicle \
     apt-utils \
     python3.9 \
+    python3-pip \
+    python3-setuptools \
     bash \
     bzip2 \
     imagemagick \
@@ -71,8 +73,8 @@ apt-get update -y && apt-get install software-properties-common && add-apt-repos
     policykit-1
 apt autoremove --yes
 
-pip install --upgrade pip setuptools && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
-pip install -r requirements.txt
+git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
+pip3 install -r requirements.txt
 
 
 
