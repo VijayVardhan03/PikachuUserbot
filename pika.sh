@@ -28,7 +28,7 @@ export ENV PYTHON_GET_PIP_SHA256=e03eb8a33d3b441ff484c56a436ff10680479d4bd14e592
 
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-apt-get update -y && apt-get install software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y && apt install python3.9
+apt-get update -y && apt-get install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt install python3.9 -y 
 
 apt autoremove --yes
 
