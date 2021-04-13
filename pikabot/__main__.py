@@ -12,7 +12,7 @@
 from . import pikabot
 import asyncio as _asyncio 
 import uvloop
-pika = asyncio.get_event_loop() 
+pika = _asyncio.get_event_loop() 
 
 if __name__ == "__main__": 
     _asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
