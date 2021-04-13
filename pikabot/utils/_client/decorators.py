@@ -229,12 +229,7 @@ def ItzSjDude(**args):
 
                     ftext += "\n\n\nLast 5 commits:\n"
 
-                    process = await asyncsubshell(command,
-                                                  stdout=asyncsub.PIPE,
-                                                  stderr=asyncsub.PIPE)
-                    stdout, stderr = await process.communicate()
-                    result = str(stdout.decode().strip()) \
-                        + str(stderr.decode().strip())
+                    result = str(e)
 
                     ftext += result
 
