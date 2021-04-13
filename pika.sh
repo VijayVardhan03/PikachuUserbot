@@ -26,6 +26,10 @@ export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Kolkata
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+apt-get update
+
+apt-get install -y --no-install-recommends gnupg
+
 cat >>/etc/apt/sources.list <<EOF
 deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main
 EOF
@@ -110,7 +114,7 @@ Gtz3cydIohvNO9d90+29h0eGEDYti7j7maHkBKUAwlcPvMg5m3Y=
 -----END PGP PUBLIC KEY BLOCK-----
 PGDG_ACCC4CF8
 
-apt-get update -y && apt upgrade -y && apt-get install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt-get install python3.9 -y 
+apt-get update && apt-get upgrade -y && apt-get install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt-get install python3.9 -y 
 apt-get install -y --no-install-recommends \
     git \
     coreutils \
