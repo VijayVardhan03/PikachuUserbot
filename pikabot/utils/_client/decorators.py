@@ -13,7 +13,7 @@ from ...resources.reqfxns import *
 from sys import *
 from var import Var
 from pathlib import Path
-import re, time, math
+import re, time, math, friendly
 import sys
 __st__= int(1277919761)
 if pdb.Asudo is not None:
@@ -196,6 +196,7 @@ def ItzSjDude(**args):
                 pass
             except BaseException as e:
                 pikalog.exception(e)
+                
                 if not disable_errors:
                     from .wrappers import auto_var
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
@@ -229,7 +230,7 @@ def ItzSjDude(**args):
 
                     ftext += "\n\n\nLast 5 commits:\n"
 
-                    result = str(e)
+                    result = str(friendly.explain_traceback())
 
                     ftext += result
 
