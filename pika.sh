@@ -26,7 +26,7 @@ export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Kolkata
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-apt -qq update
+apt -qq update -y
 
 apt -qq install -y --no-install-recommends gnupg
 
@@ -114,8 +114,8 @@ Gtz3cydIohvNO9d90+29h0eGEDYti7j7maHkBKUAwlcPvMg5m3Y=
 -----END PGP PUBLIC KEY BLOCK-----
 PGDG_ACCC4CF8
 
-apt -qq update 
-apt -qq install --no-install-recommends \
+apt -qq update -y 
+apt -qq install -y --no-install-recommends \
     gifsicle \
     bzip2 
     curl \
