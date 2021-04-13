@@ -26,9 +26,9 @@ export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Kolkata
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-apt-get update
+apt -qq update
 
-apt-get install -y --no-install-recommends gnupg
+apt -qq install -y --no-install-recommends gnupg
 
 cat >>/etc/apt/sources.list <<EOF
 deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main
@@ -114,52 +114,23 @@ Gtz3cydIohvNO9d90+29h0eGEDYti7j7maHkBKUAwlcPvMg5m3Y=
 -----END PGP PUBLIC KEY BLOCK-----
 PGDG_ACCC4CF8
 
-apt-get update && apt-get upgrade -y && apt-get install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt-get install python3.9 -y 
-apt-get install -y --no-install-recommends \
-    git \
-    coreutils \
+apt -qq update 
+apt -qq install --no-install-recommends \
     gifsicle \
-    apt-utils \
-    bash \
-    bzip2 \
-    imagemagick \
-    python3-pip \
-    build-essential \
-    cmake \
+    bzip2 
     curl \
-    libmagic-dev \
     imagemagick \
     figlet \
-    gcc \
-    g++ \
     git \
-    libevent-dev \
-    libjpeg-dev \
-    libffi-dev \
-    libpq-dev \
-    libwebp-dev \
-    libgl1 \
-    musl \
     postgresql-client-13 \
-    openssl \
     mediainfo \
     wget \
-    libreadline-dev \
-    zipalign \
     sqlite3 \
     ffmpeg \
-    libsqlite3-dev \
     axel \
-    zlib1g-dev \
-    recoverjpeg \
-    zip \
-    libfreetype6-dev \
-    procps \
-    policykit-1
-apt autoremove --yes
 
-pip3 install --upgrade pip setuptools wheel && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
-pip3 install -r requirements.txt
+pip3 install –upgrade pip && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
+pip3 install --no-cache-dir -r requirements.txt
 
 
 
