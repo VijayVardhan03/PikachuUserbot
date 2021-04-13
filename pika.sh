@@ -23,11 +23,11 @@ export DEBIAN_FRONTEND=noninteractive
 export TZ=Asia/Kolkata
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-apt-get update && apt upgrade -y 
-apt-get install -y --no-install-recommends \
+apt-get update && apt upgrade -y && add-apt-repository ppa:deadsnakes/ppa && apt-get install -y --no-install-recommends \
     coreutils \
     gifsicle \
     apt-utils \
+    python3.9
     bash \
     bzip2 \
     imagemagick \
