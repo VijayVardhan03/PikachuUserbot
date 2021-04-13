@@ -27,7 +27,7 @@ apt-get update && apt-get install software-properties-common && add-apt-reposito
     coreutils \
     gifsicle \
     apt-utils \
-    python3.9
+    python3.9 \
     bash \
     bzip2 \
     imagemagick \
@@ -57,9 +57,6 @@ apt-get update && apt-get install software-properties-common && add-apt-reposito
     openssl \
     mediainfo \
     wget \
-    python3 \
-    python3-dev \
-    python3-pip \
     libreadline-dev \
     zipalign \
     sqlite3 \
