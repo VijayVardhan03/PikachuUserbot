@@ -16,4 +16,7 @@ pika = _asyncio.get_event_loop()
 
 if __name__ == "__main__": 
     _asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-    pika.run_until_complete(pikabot())
+    try: 
+       pika.run_until_complete(pikabot())
+    except Exception as a:   
+       print(str(a))
