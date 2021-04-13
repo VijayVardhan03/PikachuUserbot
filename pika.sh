@@ -158,8 +158,8 @@ apt-get install -y --no-install-recommends \
     policykit-1
 apt autoremove --yes
 
-pip install --upgrade pip setuptools wheel && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
-pip install -r requirements.txt
+pip3 install --upgrade pip setuptools wheel && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
+pip3 install -r requirements.txt
 
 
 
