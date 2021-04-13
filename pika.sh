@@ -110,7 +110,8 @@ apt -qq install -y --no-install-recommends \
     curl \
     git \
     libreadline-dev \
-    postgresql-client-13 \
+    postgresql \
+    postgresql-contrib \
     mediainfo \
     wget \
     ffmpeg \
