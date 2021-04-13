@@ -12,8 +12,8 @@
 from . import pikabot
 import asyncio 
 import uvloop
-pikaloop = uvloop.new_event_loop()
-asyncio.set_event_loop(pikaloop)
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
-if __name__ == "__main__":  
-    pikaloop.run_until_complete(pikabot())
+if __name__ == "__main__": 
+    pika = asyncio.get_event_loop() 
+    pika.run_until_complete(pikabot())
