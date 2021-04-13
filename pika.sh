@@ -109,6 +109,7 @@ apt -qq install -y --no-install-recommends \
     bzip2 \
     curl \
     git \
+    libreadline8 \
     postgresql-client-13 \
     mediainfo \
     wget \
