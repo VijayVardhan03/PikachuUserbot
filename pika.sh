@@ -9,23 +9,12 @@
 #
 # All rights reserved 
 
-
-set -euo pipefail
-
-# Redirect stderr to stdout since tracing/apt-get/dpkg spam it for things that aren't errors.
-exec 2>&1
-set -x
-
 echo '
 ┏━┳┳┓╋╋╋┏┓╋╋┏┓           
 ┃╋┣┫┣┳━┓┃┗┳━┫┗┓ •Deployment started•
 ┃┏┫┃━┫╋┗┫╋┃╋┃┏┫
 ┗┛┗┻┻┻━━┻━┻━┻━┛
 '
-export DEBIAN_FRONTEND=noninteractive
-export TZ=Asia/Kolkata
-ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 apt -qq update -y
 
 apt -qq install -y --no-install-recommends gnupg
@@ -117,17 +106,13 @@ PGDG_ACCC4CF8
 apt -qq update -y 
 apt -qq install -y --no-install-recommends \
     gifsicle \
-    bzip2 
+    bzip2 \
     curl \
-    imagemagick \
-    figlet \
     git \
     postgresql-client-13 \
     mediainfo \
     wget \
-    sqlite3 \
     ffmpeg \
-    axel \
 
 pip3 install –upgrade pip && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
 pip3 install --no-cache-dir -r requirements.txt
