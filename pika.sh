@@ -28,6 +28,7 @@ apt -qq install -y --no-install-recommends \
     curl \
     git \
     mediainfo \
+    neofetch \
     wget \
     ffmpeg \
 
