@@ -12,6 +12,9 @@
 
 set -euo pipefail
 
+# Redirect stderr to stdout since tracing/apt-get/dpkg spam it for things that aren't errors.
+exec 2>&1
+set -x
 
 echo '
 ┏━┳┳┓╋╋╋┏┓╋╋┏┓           
@@ -19,20 +22,55 @@ echo '
 ┃┏┫┃━┫╋┗┫╋┃╋┃┏┫
 ┗┛┗┻┻┻━━┻━┻━┻━┛
 '
-export ENV DEBIAN_FRONTEND=noninteractive
-export ENV TZ=Asia/Kolkata
-export ENV PYTHON_VERSION=3.10.0a7
-export ENV PYTHON_PIP_VERSION=21.0.1
-export ENV PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/29f37dbe6b3842ccd52d61816a3044173962ebeb/public/get-pip.py
-export ENV PYTHON_GET_PIP_SHA256=e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de
-
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Asia/Kolkata
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-apt-get update -y && apt-get install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt-get install python3.9 -y && apt-get install git && apt-get update -y 
 
+apt-get update -y && apt upgrade -y && apt-get install software-properties-common -y && add-apt-repository ppa:deadsnakes/ppa -y && apt-get install python3.9 -y 
+apt-get install -y --no-install-recommends \
+    git
+    coreutils \
+    gifsicle \
+    apt-utils \
+    bash \
+    bzip2 \
+    imagemagick \
+    build-essential \
+    cmake \
+    curl \
+    libmagic-dev \
+    imagemagick \
+    figlet \
+    gcc \
+    g++ \
+    git \
+    libevent-dev \
+    libjpeg-dev \
+    libffi-dev \
+    libpq-dev \
+    libwebp-dev \
+    libgl1 \
+    musl \
+    postgresql-client-13 \
+    openssl \
+    mediainfo \
+    wget \
+    libreadline-dev \
+    zipalign \
+    sqlite3 \
+    ffmpeg \
+    libsqlite3-dev \
+    axel \
+    zlib1g-dev \
+    recoverjpeg \
+    zip \
+    libfreetype6-dev \
+    procps \
+    policykit-1
 apt autoremove --yes
 
-git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
+pip3 install --upgrade pip setuptools wheel && git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ && mkdir bin && mkdir pikabot/main_plugs && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && apt install -y ./google-chrome-stable_current_amd64.deb && rm google-chrome-stable_current_amd64.deb   
 pip3 install -r requirements.txt
 
 
