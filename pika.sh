@@ -123,6 +123,7 @@ apt-get install -y --no-install-recommends \
     bash \
     bzip2 \
     imagemagick \
+    python3-pip \
     build-essential \
     cmake \
     curl \
