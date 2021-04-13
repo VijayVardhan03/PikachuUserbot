@@ -44,5 +44,5 @@ StartUp() {
     _UpSource
     _Upchrome
     ls 
-    python3 -m pikabot
+    python3.9 -m pikabot
 }
