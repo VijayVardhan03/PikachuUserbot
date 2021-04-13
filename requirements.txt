@@ -28,7 +28,6 @@ httplib2>=0.18.0
 humanize
 lxml
 oauth2client
-psycopg2-binary
 psycopg2
 pySmartDL
 pybase64>=0.4.0
