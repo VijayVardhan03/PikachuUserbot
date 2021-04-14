@@ -96,8 +96,7 @@ set -ex \
 	&& cd /usr/src/python \
 	&& gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 	&& ./configure \
-		--build="$gnuArch" \
-		--enable-loadable-sqlite-extensions \
+		--build="$gnuArch
 		--enable-optimizations \
 		--enable-option-checking=fatal \
 		--enable-shared \
@@ -132,19 +131,19 @@ set -ex \
 	&& python3 --version
 
 # make some useful symlinks that are expected to exist
-RUN cd /usr/local/bin \
+cd /usr/local/bin \
 	&& ln -s idle3 idle \
 	&& ln -s pydoc3 pydoc \
 	&& ln -s python3 python \
 	&& ln -s python3-config python-config
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-ENV PYTHON_PIP_VERSION 21.0.1
+export PYTHON_PIP_VERSION=21.0.1
 # https://github.com/pypa/get-pip
-ENV PYTHON_GET_PIP_URL https://github.com/pypa/get-pip/raw/29f37dbe6b3842ccd52d61816a3044173962ebeb/public/get-pip.py
-ENV PYTHON_GET_PIP_SHA256 e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de
+export PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/29f37dbe6b3842ccd52d61816a3044173962ebeb/public/get-pip.py
+export PYTHON_GET_PIP_SHA256=e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de
 
-RUN set -ex; \
+set -ex; \
 	\
 	savedAptMark="$(apt-mark showmanual)"; \
 	apt-get update; \
@@ -158,7 +157,7 @@ RUN set -ex; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
-	python3 get-pip.py \
+	python get-pip.py \
 		--disable-pip-version-check \
 		--no-cache-dir \
 		"pip==$PYTHON_PIP_VERSION" \
