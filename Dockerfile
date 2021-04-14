@@ -8,7 +8,7 @@
 #
 # All rights reserved 
 
-FROM python:latest
+FROM Ubuntu:latest
 COPY pika.sh /tmp/pika.sh
 WORKDIR root/ItzSjDude
 ENV PYTHONUNBUFFERED=1
