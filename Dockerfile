@@ -12,5 +12,6 @@ FROM ubuntu:latest
 COPY pika.sh /tmp/pika.sh
 RUN /tmp/pika.sh && chmod +x /usr/local/bin/* 
 WORKDIR root/ItzSjDude
-RUN git clone -b beta https://github.com/ItzSjDude/PikachuUserbot . && pip3 install --no-cache-dir -r requirements.txt
+RUN git clone -b beta https://github.com/ItzSjDude/PikachuUserbot . 
+RUN pip3 install --no-cache-dir -r requirements.txt
 CMD ["bash", "startpika"]
