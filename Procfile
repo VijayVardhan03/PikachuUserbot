@@ -1,1 +1,0 @@
-Pikabot: bash startpika
