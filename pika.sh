@@ -98,8 +98,6 @@ set -ex \
 	&& ./configure \
 		--build="$gnuArch" \
 		--enable-optimizations \
-		--enable-shared \
-		--without-ensurepip \
 	&& make -j "$(nproc)" \
 		LDFLAGS="-Wl,--strip-all" \
 	&& make install \
