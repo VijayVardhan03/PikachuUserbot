@@ -1,5 +1,4 @@
 Telethon>=1.21.1
-multidict==4.7.3
 Pillow>=5.3.0
 PyGithub
 aiofiles
@@ -57,7 +56,6 @@ jikanpy
 psutil
 pyLyrics
 uvloop
-wheel
 cairosvg
 lottie
 glitch_this
