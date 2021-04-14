@@ -55,7 +55,7 @@ set -eux; \
 	rm -rf /var/lib/apt/lists/*
 
 export GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D
-export PYTHON_VERSION=3.10.0a7
+export PYTHON_VERSION=3.9
 
 set -ex \
 	\
