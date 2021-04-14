@@ -10,6 +10,7 @@
 
 FROM ubuntu:latest
 COPY pika.sh /tmp/pika.sh
-WORKDIR root/ItzSjDude
 RUN /tmp/pika.sh && chmod +x /usr/local/bin/* 
+WORKDIR root/ItzSjDude
+RUN git clone -b beta https://github.com/ItzSjDude/PikachuUserbot . && pip3 install -r requirements.txt
 CMD ["bash", "startpika"]
