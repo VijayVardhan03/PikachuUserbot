@@ -566,16 +566,16 @@ def get_locks(pika, chat_id):
         SESSION.close()
 
 class pdb(object):
-    Api_id = _get("API_ID")
-    Api_hash = _get("API_HASH")
-    Bf_uname = _get("TG_BOT_USER_NAME_BF_HER")
-    Omega = _get("TG_BOT_TOKEN_BF_HER")
+    Api_id = _get("Api_id")
+    Api_hash = _get("Api_hash")
+    Bf_uname = _get("Bot_username")
+    Omega = _get("Bot_token")
     Alpha = pget("alpha", "session")
     Beta = pget("beta", "session")
     Gaama = pget("gaama", "session")
     Delta = pget("delta", "session")
     Asstt = pget("omega", "assistant")
-    Botlog_chat = int(_get("BOTLOG_CHATID"))
+    Botlog_chat = int(_get("Botlog_chat"))
     Ytapi = pget("omega", "ytapi")
     Gdtoken = pget("omega", "gdtoken")
     if pget("alpha", "sudo"):  
