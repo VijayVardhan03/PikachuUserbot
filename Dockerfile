@@ -8,10 +8,28 @@
 #
 # All rights reserved 
 
-FROM ubuntu:latest
-COPY pika.sh /tmp/pika.sh
-RUN /tmp/pika.sh && chmod +x /usr/local/bin/* 
+FROM python:3.9
+
+# set the working directory in the container
 WORKDIR root/ItzSjDude
-RUN git clone -b beta https://github.com/ItzSjDude/PikachuUserbot . 
-RUN pip3 install --no-cache-dir -r requirements.txt
-CMD ["bash", "startpika"]
+
+RUN apt -qq update
+RUN apt -qq install -y --no-install-recommends \
+    curl \
+    git \
+    gnupg2 \
+    unzip \
+    wget \
+    ffmpeg \
+    jq
+
+RUN mkdir -p /tmp/ && \
+    cd /tmp/ && \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
+    rm ./google-chrome-stable_current_amd64.deb
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD [ "bash", "startpika" ]
