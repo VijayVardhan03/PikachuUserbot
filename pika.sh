@@ -37,14 +37,14 @@ apt -qq install -y --no-install-recommends \
     ffmpeg \
 
 
-ENV PATH /usr/local/bin:$PATH
+export PATH =/usr/local/bin:$PATH
 
 # http://bugs.python.org/issue19846
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
-ENV LANG C.UTF-8
+export LANG C.UTF-8
 
 # runtime dependencies
-RUN set -eux; \
+set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		ca-certificates \
@@ -53,10 +53,10 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
-ENV GPG_KEY E3FF2839C048B25C084DEBE9B26995E310250568
-ENV PYTHON_VERSION 3.9.4
+export GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568
+export PYTHON_VERSION=3.9.4
 
-RUN set -ex \
+set -ex \
 	\
 	&& savedAptMark="$(apt-mark showmanual)" \
 	&& apt-get update && apt-get install -y --no-install-recommends \
