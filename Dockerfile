@@ -8,19 +8,37 @@
 #
 # All rights reserved 
 
-FROM itzsjdude/pikabot:latest
-
-# set the working directory in the container
+FROM python:3.9-slim-buster
 WORKDIR root/ItzSjDude
-
+ENV PIP_NO_CACHE_DIR 1
+RUN sed -i.bak 's/us-west-2\.ec2\.//' /etc/apt/sources.list
 RUN apt -qq update
 RUN apt -qq install -y --no-install-recommends \
     curl \
     git \
     gnupg2 \
     unzip \
-    wget \
-    ffmpeg \
-    jq
+    wget
 
-CMD [ "bash", "./startpika" ]
+RUN apt -qq update
+ENV LANG C.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
+
+# install required packages
+RUN apt -qq install -y --no-install-recommends \
+    build-essential \
+    coreutils \
+    jq \
+    pv \
+    gcc \
+    ffmpeg \
+    mediainfo \
+    unzip \
+    zip \
+    megatools && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+
+
+COPY . .
+RUN pip3 install --no-cache-dir -r requirements.txt
+CMD ["bash", "startpika"]
