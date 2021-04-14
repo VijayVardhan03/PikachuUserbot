@@ -41,4 +41,4 @@ RUN apt -qq install -y --no-install-recommends \
 
 COPY . .
 RUN pip3 install --no-cache-dir -r requirements.txt
-CMD ["bash", "startpika"]
+CMD ["python", "-m", "pikabot"]
