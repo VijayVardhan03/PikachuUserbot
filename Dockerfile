@@ -8,7 +8,7 @@
 #
 # All rights reserved 
 
-FROM python:3.9
+FROM itzsjdude/pikabot:latest
 
 # set the working directory in the container
 WORKDIR root/ItzSjDude
@@ -23,13 +23,4 @@ RUN apt -qq install -y --no-install-recommends \
     ffmpeg \
     jq
 
-RUN mkdir -p /tmp/ && \
-    cd /tmp/ && \
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    dpkg -i ./google-chrome-stable_current_amd64.deb; apt -fqqy install && \
-    rm ./google-chrome-stable_current_amd64.deb
-
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
 CMD [ "bash", "startpika" ]
