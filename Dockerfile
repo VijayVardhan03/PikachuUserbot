@@ -23,4 +23,4 @@ RUN apt -qq install -y --no-install-recommends \
     ffmpeg \
     jq
 
-CMD [ "bash", "startpika" ]
+CMD [ "bash", "./startpika" ]
