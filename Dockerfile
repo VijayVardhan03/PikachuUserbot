@@ -20,6 +20,7 @@ RUN apt -qq install -y --no-install-recommends \
     unzip \
     wget
 
+RUN git config --global core.preloadindex true && git config --global core.fscache true && git config --global gc.auto 256
 RUN apt -qq update
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
