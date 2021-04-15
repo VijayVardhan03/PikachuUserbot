@@ -28,21 +28,16 @@ _CleanUp() {
 _UpSource() {
     echo 'Github: Updating PikaBot With ItzSjDude/PikachuUserbot' 
     git clone -b beta https://github.com/ItzSjDude/PikachuUserbot ./ &> /dev/null
-    mkdir ./plugins
     git clone -b Beta https://github.com/ItzSjDude/PikaBotPlugins ./Temp &> /dev/null
+    mkdir ./plugins
     cp ./Temp/plugins/*.py ./plugins
     rm -rf ./Temp
 }
 
-_Upchrome() {
-    echo 'Chrome: Setting up Chrome configurations:' 
-    chmod +x ./pikabot/Chrome/chromedriver && mv -f ./pikabot/Chrome/chromedriver /usr/bin/ &> /dev/null
-}
 StartUp() {
     _logo
     _CleanUp
     _UpSource
-    _Upchrome
-    ls 
     python3 -m pikabot
 }
+
