@@ -3,12 +3,6 @@ import os
 from telethon.tl.types import ChatBannedRights
 client1 = "@Errorx404x"
 class Var(object):
-    APP_ID = int(os.environ.get("APP_ID", 6))
-    API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
-    STR1 = os.environ.get("STRING_SESSION", None)
-    STR2 = os.environ.get("STR2", None)
-    STR3 = os.environ.get("STR3", None)
-    STR4 = os.environ.get("STR4", None)
     DB_URI = os.environ.get("DATABASE_URL", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./User_Drive")
     TMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./User_Drive")
@@ -16,11 +10,6 @@ class Var(object):
     LOGGER = True
     GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
     GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
-    SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "779890498").split())
-    SUDO_USERS1 = set(int(x) for x in os.environ.get("SUDO_USERS1", "779890498").split())
-    SUDO_USERS2 = set(int(x) for x in os.environ.get("SUDO_USERS2", "779890498").split())
-    SUDO_USERS3 = set(int(x) for x in os.environ.get("SUDO_USERS3", "779890498").split())
-    SUDO_USERS4 = set(int(x) for x in os.environ.get("SUDO_USERS4", "779890498").split())
     WHITELIST_USERS = set(int(x) for x in os.environ.get("WHITELIST_USERS", "779890498").split())
     BLACKLIST_USERS = set(int(x) for x in os.environ.get("BLACKLIST_USERS", "").split())
     DEVLOPERS = set(int(x) for x in os.environ.get("DEVLOPERS", "779890498").split())
@@ -28,8 +17,8 @@ class Var(object):
     SUPPORT_USERS = set(int(x) for x in os.environ.get("SUPPORT_USERS", "").split())
     PLUGIN_CHANNEL = int(os.environ.get("BOTLOG_CHATID", None))
     LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
-    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
-    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    HEROKU_API_KEY = os.environ.get("Heroku_apikey", None)
+    HEROKU_APP_NAME = os.environ.get("Heroku_appname", None)
     TG_BOT_TOKEN_BF_HER = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
     TG_BOT_USER_NAME_BF_HER = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
     DOWNLOAD_PFP_URL_CLOCK = os.environ.get("DOWNLOAD_PFP_URL_CLOCK", None)
@@ -44,15 +33,11 @@ class Var(object):
         t_file = open(TMP_DOWNLOAD_DIRECTORY + "auth_token.txt", "w")
         t_file.write(AUTH_TOKEN_DATA)
         t_file.close()
-    BOTLOG_CHATID = os.environ.get("BOTLOG_CHATID", None)
-
     #+++++++++++++++++++++++++++|BORG_CONFIG|+++++++++++++++++++++++++++# 
     LOGGER = True
     LOCATION = os.environ.get("LOCATION", None)
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
     SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get("SCREEN_SHOT_LAYER_ACCESS_KEY", None)
-    PRIVATE_GROUP_BOT_API_ID = int(os.environ.get("BOTLOG_CHATID", None))
-    PRIVATE_CHANNEL_BOT_API_ID = int(os.environ.get("BOTLOG_CHATID", None))
     TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./User_Drive")
     IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
     IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
