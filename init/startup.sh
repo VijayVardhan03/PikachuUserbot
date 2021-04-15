@@ -13,4 +13,3 @@
 
 . init/Deps.sh 
 
-StartUp
