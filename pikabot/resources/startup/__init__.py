@@ -62,11 +62,13 @@ async def pikabot():
             if tgbot: 
                 for name in files:
                     with open(name) as f:
-                        path1 = Path(f.name); shortname = path1.stem; pika_plugins(shortname.replace(".py", ""))
+                        path1 = Path(f.name); shortname = path1.stem
+                        pika_plugins(shortname.replace(".py", ""))
             if pdb.Asstt: 
                 for name in _files:
                     with open(name) as f:
-                        _asstpath = Path(f.name); shortname = _asstpath.stem; pika_assistant(shortname.replace(".py", ""))
+                        _asstpath = Path(f.name); shortname = _asstpath.stem
+                        pika_assistant(shortname.replace(".py", ""))
 
         try: 
             __load_plugs__()
