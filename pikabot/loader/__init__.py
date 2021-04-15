@@ -22,7 +22,7 @@ def pika_assistant(_pikasst=None):
     spec = spec_from_file_location(asstname, asstpath)
     asst = module_from_spec(spec)
                                #____Pikabot__Assistant__Plugins__Loader____
-    userbot = pikabot; asst.bot = bot; asst.tgbot = tgbot; asst.Var = Var; asst.rx = rx; asst.ItzSjDude = ItzSjDude; asst.pikatgbot = pikatgbot; modules['Asst_modules'] = _Modules       
+    userbot = pikabot; asst.bot = bot; asst.tgbot = tgbot; asst.Var = Var; asst.rx = rx; asst.ItzSjDude = ItzSjDude; asst.pdb = pdb; asst.pikatgbot = pikatgbot; modules['Asst_modules'] = _Modules       
     PikaAsst[_pikasst] = asst; modules["pikabot"+_pikasst] = asst; tgbot.PikaAsst[_pikasst] = asst; spec.loader.exec_module(asst); logpa.info("🔥Imported "+_pikasst)
            
 
@@ -38,7 +38,7 @@ def pika_plugins(_pikamod=None):
     spec = spec_from_file_location(name, path)
     _pika = module_from_spec(spec)
                                    #____Pikabot__Plugins__Loader____
-    userbot = pikabot; _pika.bot = bot; _pika.Var = Var; _pika.rx = rx; _pika.ItzSjDude = ItzSjDude; _pika.Config = Var; _pika.borg = bot; _pika.logger = logging.getLogger(_pikamod)
+    userbot = pikabot; _pika.bot = bot; _pika.Var = Var; _pika.rx = rx; _pika.ItzSjDude = ItzSjDude; _pika.pdb = pdb; _pika.Config = Var; _pika.borg = bot; _pika.logger = logging.getLogger(_pikamod)
     modules["userbot"] = pikabot; modules["userbot.utils"] = _utilz; spec.loader.exec_module(_pika); bot.pika_cmd[_pikamod] = _pika; modules["pikabot"+_pikamod] = _pika; logpl.info("🔥Imported "+_pikamod)
 
 def load_ext_module(shortname):
