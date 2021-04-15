@@ -177,8 +177,8 @@ def ItzSjDude(**args):
 
     def decorator(func):
         async def wrapper(check):
-            if BOTLOG:
-                send_to = BOTLOG_CHATID
+            if pdb.Botlog_chat:
+                send_to = pdb.Botlog_chat
             if not trigger_on_fwd and check.fwd_from:
                 return
             if check.via_bot_id and not trigger_on_inline:
@@ -238,7 +238,7 @@ def ItzSjDude(**args):
                     file.write(ftext)
                     file.close()
 
-                    if BOTLOG:
+                    if pdb.Botlog_chat:
                         await check.client.send_file(
                             send_to,
                             "error.log",
