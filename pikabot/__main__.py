@@ -10,13 +10,7 @@
 # All rights reserved
 
 from . import pikabot
-import asyncio as _asyncio 
-import uvloop
-pika = _asyncio.get_event_loop() 
+import asyncio as _asyncio  
 
 if __name__ == "__main__": 
-    _asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-    try: 
-       pika.run_until_complete(pikabot())
-    except Exception as a:   
-       print(str(a))
+       asyncio.get_event_loop().run_until_complete(pikabot())
