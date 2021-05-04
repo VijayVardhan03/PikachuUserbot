@@ -15,6 +15,7 @@ jobs:
         with:
           commit_message: 'Pikabot Auto fixes'
           commit_options: '--no-verify'
+          branch: beta
           repository: .
           commit_user_name: ItzSjDude
           commit_user_email: Support@itzsjdude.in
