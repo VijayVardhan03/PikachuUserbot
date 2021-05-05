@@ -36,25 +36,25 @@ async def pikabot():
         if pdb.Alpha:
             try:
                 await bot.start(); bot.me = await bot.get_me(); bot.pika_cmd = {}; bot.uid = tutils.get_peer_id(bot.me); pikalog.info(_logstr_.format("mainclient")); msg += _logstr_.format("mainclient") + "\n\n"; await pika_msg(_logpika, msg)
-            except exception as e:
+            except Exception as e:
                 pikalog.info(str(e)); pikalog.info(_logstr2_.format("mainclient")); msg += _logstr2_.format("mainclient") + "\n\n"; await pika_msg(_logpika, msg); await pika_login("alpha")
 
         if pdb.Beta:
             try:
                 await bot2.start(); pikalog.info(_logstr_.format("multiclient1")); bot2.me = await bot2.get_me(); bot2.uid = tutils.get_peer_id(bot2.me); msg += _logstr_.format("multiclient1") + "\n\n"; await pika_msg(_logpika, msg)
-            except baseexception:
+            except:
                 pikalog.info(_logstr2_.format("multiclient1")); msg += _logstr2_.format("multiclient1") + "\n\n"; await pika_msg(_logpika, msg); await pika_login("beta")
 
         if pdb.Gaama:
             try:
                 await bot3.start(); pikalog.info(_logstr2_.format("multiclient2")); bot3.me = await bot3.get_me(); bot3.uid = tutils.get_peer_id(bot3.me); msg += _logstr_.format("multiclient2") + "\n\n"; await pika_msg(_logpika, msg)
-            except baseexception:
+            except:
                 pikalog.info(_logstr2_.format("multiclient2")); msg += _logstr2_.format("multiclient2") + "\n\n"; await pika_msg(_logpika, msg); await pika_login("gaama")
 
         if pdb.Delta:
             try:
                 await bot4.start(); pikalog.info(_logstr_.format("multiclient3")); bot4.me = await bot4.get_me(); bot4.uid = tutils.get_peer_id(bot4.me); msg += logstr_.format("multiclient3") + "\n\n"; await pika_msg(_logpika, msg)
-            except baseexception:
+            except:
                 pikalog.info(_logstr2_.format("multiclient3")); msg += _logstr2_.format("multiclient3") + "\n\n"; await pika_msg(_logpika, msg); await pika_login("delta")
 
         def __load_plugs__():
