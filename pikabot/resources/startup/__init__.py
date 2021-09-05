@@ -11,7 +11,7 @@
 
 from ...utils import pika_msg
 from ..login import pika_login
-from ...clients import bot, bot2, bot3, bot4, tgbot
+from ...clients import gpcid, tgbot
 from ..logit import *
 from sys import *
 import asyncio, os
@@ -23,6 +23,15 @@ import telethon.utils as tutils
 from telethon.errors.rpcerrorlist import *
 import time
 pikalog = getLogger("Startup")
+
+#________Clients_________
+bot=gpcid("#cGJvdDE")
+bot2=gpcid("#cGJvdDI")
+bot3=gpcid("#cGJvdDM")
+bot4=gpcid("#cGJvdDQ")
+tgbot=gpcid("#cHRnYm90")
+#________________________
+
 async def pikabot(): 
     from ...core.database import pdb
     if not bot:
@@ -81,19 +90,19 @@ async def pikabot():
 
     if len(argv) not in (1, 3, 4):
         if bot:
-            await bot.disconnect()
-        if client2:
-            await bot2.disconnect()
-        if client3:
-            await bot3.disconnect()
-        if client4:
-            await bot4.disconnect()
+            await gpcid("#cGJvdDE").disconnect()
+        if bot2:
+            await gpcid("#cGJvdDI").disconnect()
+        if bot3:
+            await gpcid("#cGJvdDM").disconnect()
+        if bot4:
+            await gpcid("#cGJvdDQ").disconnect()
     else:
         if bot:
             await bot.run_until_disconnected()
         if bot2:
-            await client2.run_until_disconnected()
+            await bot2.run_until_disconnected()
         if bot3:
-            await client3.run_until_disconnected()
+            await bot3.run_until_disconnected()
         if bot4:
-            await client4.run_until_disconnected()
+            await bot4.run_until_disconnected()
