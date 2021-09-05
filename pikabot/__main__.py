@@ -18,7 +18,7 @@ async def init_pika():
       pikalog.info("**MAINCLIENT**: Started Login Assistent, Do /start at {}'s PM".format(BF_BOTNAME))
       await pika_login("STRING_SESSION")
   else:
-      _const= {}; _start = True; l= Var.CUSTOM_CMD; from pikabot.login import pika_login, pika_msg; _logstr_ = "__{}__: Connected 🔥"; _logstr2_ = "__{}__: Started Login Assistent, Do /start at {}'s PM".format(_const, BF_BOTNAME); import glob;path = './plugins/*.py';_path='./pikabot/Assistant/plugins/*.py';files = glob.glob(path); _files = glob.glob(_path)
+      _const= {}; _start = True; l= Var.CUSTOM_CMD; from pikabot.login import pika_login, pika_msg; _logstr_ = "__{}__: Connected 🔥❤️"; _logstr2_ = "__{}__: Started Login Assistent, Do /start at {}'s PM".format(_const, BF_BOTNAME); import glob;path = './plugins/*.py';_path='./pikabot/Assistant/plugins/*.py';files = glob.glob(path); _files = glob.glob(_path)
       
       if _start: 
           await tgbot.start(); tgbot.me = await tgbot.get_me(); tgbot.PikaAsst = {}; tgbot.uid = telethon.utils.get_peer_id(tgbot.me); pikalog.info(_logstr_.format("TGBOT")); msg = _logstr_.format("_TGBOT_") + '\n\n'; _logpika = await tgbot.send_message(BOTLOG_CHATID, msg)
